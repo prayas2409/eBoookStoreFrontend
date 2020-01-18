@@ -3,6 +3,7 @@ import ToolBar from './headerbar';
 import Footer from "./Footer";
 import GridView from './gridView.js';
 import CustomPaginationActionsTable from './pagination';
+import LowerBar from './LowerBar';
 
 require('dotenv').config();
 
@@ -19,7 +20,10 @@ class home extends React.Component {
         return (
             <div>
                 <ToolBar />
-                <GridView />
+                <div style={{ border: '1px solid red' }}>
+                    <LowerBar />
+                    <GridView />
+                </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px', marginTop: '30px' }}>
                     <CustomPaginationActionsTable />
                 </div>

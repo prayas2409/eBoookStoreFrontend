@@ -116,24 +116,24 @@ export default function ToolBar() {
       </AppBar>
     </div>
   );
-// class headerbar extends Component {
-  
-//   render(){
-//     return (
-//       <div>
-//           <AppBar position="static"  style={{ backgroundColor: '#b30047' }}>
-//             <Toolbar variant="dense">
-//             <IconButton edge="start"  color="inherit" aria-label="menu">
-//             <img src={bookicon} style={{blockSize: '30px'}} />
-//               </IconButton>
-//             <Typography variant="h6" color="inherit">
-//               e_Book_Store
-//             </Typography>
-//             {/* <SearchBar/> */}
-//             </Toolbar>
-//           </AppBar>
-//       </div>
-//       );
-//     }
+  // class headerbar extends Component {
+
+  //   render(){
+  //     return (
+  //       <div>
+  //           <AppBar position="static"  style={{ backgroundColor: '#b30047' }}>
+  //             <Toolbar variant="dense">
+  //             <IconButton edge="start"  color="inherit" aria-label="menu">
+  //             <img src={bookicon} style={{blockSize: '30px'}} />
+  //               </IconButton>
+  //             <Typography variant="h6" color="inherit">
+  //               e_Book_Store
+  //             </Typography>
+  //             {/* <SearchBar/> */}
+  //             </Toolbar>
+  //           </AppBar>
+  //       </div>
+  //       );
+  //     }
 
 }

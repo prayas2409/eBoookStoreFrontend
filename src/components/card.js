@@ -10,13 +10,23 @@ require('dotenv').config();
 class card extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            cardHover: false
+        }
+        this.handleOnHoverCard = this.handleOnHoverCard.bind(this)
+    }
 
+    handleOnHoverCard = () => {
+        console.log("Hovering")
+        this.setState({
+            cardHover: !this.state.cardHover
+        })
     }
 
     render() {
         return (
-            <div>
-                <Card className="card">
+            <div onMouseEnter={() => this.handleOnHoverCard()} onMouseLeave={() => this.handleOnHoverCard()}>
+                <Card className="card" >
                     <CardActionArea>
                         <div className="divName">
                             <img src={image1} width="100px" height="130px" />
