@@ -49,7 +49,7 @@ export default class LowerBar extends Component {
         }
     }
 
-    handleOnHoverFilter = () => {
+    handleOnHoverFilter = (event) => {
         console.log("Hovering")
         this.setState({
             clickedFilter: !this.state.clickedFilter
@@ -66,7 +66,7 @@ export default class LowerBar extends Component {
                     </Typography>
                         < div style={{ display: "flex", marginLeft: "auto" }} >
                             {!this.state.clickedFilter ?
-                                < Button onMouseEnter={() => this.handleOnHoverFilter()} variant="outlined" color="primary" >
+                                < Button onMouseEnter={(event) => this.handleOnHoverFilter(event)} variant="outlined" color="primary" >
                                     <div style={{}}>Filter by price </div>
                                 </Button>
                                 :

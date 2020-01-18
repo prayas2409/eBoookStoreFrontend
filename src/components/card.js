@@ -25,7 +25,9 @@ class card extends React.Component {
 
     render() {
         return (
+            
             <div onMouseEnter={() => this.handleOnHoverCard()} onMouseLeave={() => this.handleOnHoverCard()}>
+               {!this.state.cardHover?
                 <Card className="card" >
                     <CardActionArea>
                         <div className="divName">
@@ -53,6 +55,9 @@ class card extends React.Component {
                         <div className="BookWishlist"><Button >wishlist</Button></div>
                     </div>
                 </Card>
+                :
+                <p>Hiii</p>
+                }
             </div>
         )
     }
