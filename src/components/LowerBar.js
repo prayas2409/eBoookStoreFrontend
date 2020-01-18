@@ -62,7 +62,7 @@ export default class LowerBar extends Component {
                 <div >
                     <Toolbar>
                         <Typography edge="start" variant="h6" >
-                            Books
+                            Books (52 items)
                     </Typography>
                         < div style={{ display: "flex", marginLeft: "auto" }} >
                             {!this.state.clickedFilter ?

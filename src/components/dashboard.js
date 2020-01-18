@@ -20,7 +20,7 @@ class home extends React.Component {
         return (
             <div>
                 <ToolBar />
-                <div style={{ border: '1px solid red' }}>
+                <div style={{ width: '80%', margin: 'auto' }}>
                     <LowerBar />
                     <GridView />
                 </div>
