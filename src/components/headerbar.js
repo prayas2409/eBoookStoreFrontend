@@ -82,25 +82,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 export default function ToolBar() {
-
-  //   render(){
-  // return (
-
-  //   <div class="header">
-  //     <AppBar position="static"  style={{ backgroundColor: '#b30047' }}>
-  //       <Toolbar variant="dense">
-  //       <IconButton edge="start"  color="inherit" aria-label="menu">
-  //       <img src={bookicon} style={{blockSize: '30px'}} />
-  //         </IconButton>
-  //       <Typography variant="h6" color="inherit">
-  //         eBookStore
-  //       </Typography>
-  //       {/* <SearchBar/> */}
-  //       </Toolbar>
-  //     </AppBar>
-  //   </div>
-  //   );
-  //   }
   const classes = useStyles();
   return (
     <div className={classes.grow} >
@@ -135,4 +116,24 @@ export default function ToolBar() {
       </AppBar>
     </div>
   );
+// class headerbar extends Component {
+  
+//   render(){
+//     return (
+//       <div>
+//           <AppBar position="static"  style={{ backgroundColor: '#b30047' }}>
+//             <Toolbar variant="dense">
+//             <IconButton edge="start"  color="inherit" aria-label="menu">
+//             <img src={bookicon} style={{blockSize: '30px'}} />
+//               </IconButton>
+//             <Typography variant="h6" color="inherit">
+//               e_Book_Store
+//             </Typography>
+//             {/* <SearchBar/> */}
+//             </Toolbar>
+//           </AppBar>
+//       </div>
+//       );
+//     }
+
 }
