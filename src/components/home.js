@@ -5,7 +5,7 @@ import CardHeader from '@material-ui/core/CardHeader'
 import CardContent from '@material-ui/core/CardContent'
 import CardMedia from '@material-ui/core/CardMedia'
 import RecipeReviewCard from "./note.jsx"
-
+import LowerBar from './LowerBar'
 
 require('dotenv').config();
 
@@ -22,12 +22,9 @@ class home extends React.Component {
     render(){
 
     return(
-            // <Card>
-            //     <CardHeader>I am br </CardHeader>
-            //     <CardContent>My God</CardContent>
-            //     <CardMedia>OYyye</CardMedia>
-            // </Card>
-            <RecipeReviewCard/>
+            <RecipeReviewCard/>,
+            <LowerBar/>
+
        );
     }
 
