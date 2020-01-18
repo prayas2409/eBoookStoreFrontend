@@ -10,23 +10,22 @@ import SearchBar from "./searchbar"
 
 class headerbar extends Component {
   
-    render(){
-  return (
-    
-    <div class="header">
-      <AppBar position="static"  style={{ backgroundColor: '#b30047' }}>
-        <Toolbar variant="dense">
-        <IconButton edge="start"  color="inherit" aria-label="menu">
-        <img src={bookicon} style={{blockSize: '30px'}} />
-          </IconButton>
-        <Typography variant="h6" color="inherit">
-          e_Book_Store
-        </Typography>
-        {/* <SearchBar/> */}
-        </Toolbar>
-      </AppBar>
-    </div>
-    );
+  render(){
+    return (
+      <div>
+          <AppBar position="static"  style={{ backgroundColor: '#b30047' }}>
+            <Toolbar variant="dense">
+            <IconButton edge="start"  color="inherit" aria-label="menu">
+            <img src={bookicon} style={{blockSize: '30px'}} />
+              </IconButton>
+            <Typography variant="h6" color="inherit">
+              e_Book_Store
+            </Typography>
+            {/* <SearchBar/> */}
+            </Toolbar>
+          </AppBar>
+      </div>
+      );
     }
 }
 
