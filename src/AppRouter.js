@@ -6,8 +6,8 @@ import headerbar from "./components/headerbar"
 const AppRouter = () => (
     <BrowserRouter>
         <div>
-                <Route path="/header" component={headerbar} exact={false} />
-                <Route path="/header/home" component={home} exact={true} />
+                <Route path="/" component={headerbar} exact={false} />
+                <Route path="/home" component={home} exact={true} />
                 
                 
                 
