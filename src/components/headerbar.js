@@ -13,7 +13,7 @@ class headerbar extends Component {
     render(){
   return (
     
-    <div class="header">
+    <div className="header">
       <AppBar position="static"  style={{ backgroundColor: '#b30047' }}>
         <Toolbar variant="dense">
         <IconButton edge="start"  color="inherit" aria-label="menu">
