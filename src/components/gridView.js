@@ -13,28 +13,31 @@ const useStyles = makeStyles(theme => ({
 export default function GridView() {
     const classes = useStyles();
 
-    let data = [<Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />]
+    let data = [<Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />, <Card />]
 
 
-    function FormRow() {
-        return (
-            <React.Fragment>
-                <Grid item xs={3}>
-                    {data.map(o => (
-                        o
-                    ))}
-                </Grid>
-            </React.Fragment>
-        );
-    }
+    // function FormRow() {
+    //     return (
+    //         <React.Fragment>
+    //             <Grid item xs={3}>
+    //                 {data.map(o => (
+    //                     o
+    //                 ))}
+    //             </Grid>
+    //         </React.Fragment>
+    //     );
+    // }
 
     return (
-        <div className={classes.root}>
-            <Grid container spacing={1}>
+        <div className={classes.root} style={{display:'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', padding: '20px'}}>
+            {/* <Grid container spacing={1}>
                 <Grid container item xs={5} spacing={5} style={{ display: 'flex', justifyContent: 'center' }}>
                     <FormRow />
                 </Grid>
-            </Grid>
+            </Grid> */}
+            {data.map(o => (
+                o
+            ))}
         </div>
     );
 }
