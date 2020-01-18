@@ -30,7 +30,7 @@ export default class LowerBar extends Component{
         }
         this.handleOnClickFilter = this.handleOnClickFilter.bind(this)
         this.handleOnHoverFilter = this.handleOnHoverFilter.bind(this)
-        this.handleValueChange = this.handleValueChange.bind()
+        this.handleValueChange = this.handleValueChange.bind(this)
     }
 
     handleValueChange = (event) =>{
@@ -58,6 +58,7 @@ export default class LowerBar extends Component{
 
     render(){
         return (
+            <p>
             <div >
                 <Toolbar>
                     <Typography edge="start" variant="h6" >
@@ -79,6 +80,7 @@ export default class LowerBar extends Component{
                     </div>
                     </Toolbar>
                </div>
+               </p>
         )
     }
 
