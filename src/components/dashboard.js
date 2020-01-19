@@ -20,11 +20,11 @@ class home extends React.Component {
         return (
             <div>
                 <ToolBar />
-                <div style={{ width: '80%', margin: 'auto' }}>
+                <div style={{ width: '74%', margin: 'auto' }}>
                     <LowerBar />
                     <GridView />
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '30px', marginTop: '30px' }}>
+            <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
                     <CustomPaginationActionsTable />
                 </div>
                 <Footer />

@@ -29,7 +29,7 @@ export default function GridView() {
     // }
 
     return (
-        <div className={classes.root} style={{display:'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly', padding: '20px'}}>
+        <div className={classes.root} style={{display:'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly'}}>
             {/* <Grid container spacing={1}>
                 <Grid container item xs={5} spacing={5} style={{ display: 'flex', justifyContent: 'center' }}>
                     <FormRow />

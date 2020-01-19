@@ -66,7 +66,7 @@ export default class LowerBar extends Component {
                     </Typography>
                         < div style={{ display: "flex", marginLeft: "auto" }} >
                             {!this.state.clickedFilter ?
-                                < Button onMouseEnter={() => this.handleOnHoverFilter()} variant="outlined" color="primary" >
+                                < Button onMouseEnter={() => this.handleOnHoverFilter()} variant="outlined" color="default" >
                                     <div style={{}}>Filter by price </div>
                                 </Button>
                                 :
