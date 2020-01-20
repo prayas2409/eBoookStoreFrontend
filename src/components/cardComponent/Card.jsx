@@ -26,6 +26,7 @@ class Cards extends React.Component {
 
     render() {
         return (
+            
             <div onMouseEnter={() => this.handleOnHoverCard()} onMouseLeave={() => this.handleOnHoverCard()}>
                 <Card className="card" id="info" variant="outlined">
 

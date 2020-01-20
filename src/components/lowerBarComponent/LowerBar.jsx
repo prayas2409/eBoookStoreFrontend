@@ -35,7 +35,7 @@ export default class LowerBar extends Component {
         }
     }
 
-    handleOnHoverFilter = () => {
+    handleOnHoverFilter = (event) => {
         console.log("Hovering")
         this.setState({
             clickedFilter: !this.state.clickedFilter
