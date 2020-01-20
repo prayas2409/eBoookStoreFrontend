@@ -4,6 +4,8 @@ import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Card from './card'
 import { getMethod } from './httpService.js';
+import { getFiltered} from './httpService.js';
+
 
 const useStyles = createMuiTheme({
     root: {
@@ -17,7 +19,6 @@ class GridView extends Component {
         super(props);
         this.state = {
             books: [],
-            data: []
         }
     }
     componentDidMount() {
