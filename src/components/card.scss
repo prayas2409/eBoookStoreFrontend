@@ -1,9 +1,9 @@
 $color : #FFFFFF;
 .card{
-    margin-top: 50px;
+    margin-bottom: 30px;
     background-color : $color;
-    height: 250px;
-    width: 200px;
+    height: 260px;
+    width: 20 0px;
     border-color: gray;
 }
 
@@ -32,10 +32,15 @@ $color : #FFFFFF;
 }
 
 .BookPrice {
+    display: flex;
+    justify-content: space-between;
     color: rgb(27, 24, 24);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 12px;
     font-weight: bolder;
+    padding-top: 4px;
+    width: 87%;
+    // border: 1px solid red;
 }
 
 .BookDetail {
@@ -48,22 +53,52 @@ $color : #FFFFFF;
 
 
 .BookBuyButton{
-    padding-left: 2px;
+    // padding-left: 2px;
     color: white;
     background-color: #a03037;
+    // justify-content: space-evenly;
+    // font-size: 3px;
+    // font-weight: bold;
+    // margin-left: 10px;
+}
+
+.BookWishlist{
+    // font-size: 3px;
+    // margin-left: 12px;
+    padding-left: 2px;
+    color: white;
+    // background-color: #a03037;
     justify-content: space-evenly;
     font-size: 3px;
     font-weight: bold;
     margin-left: 10px;
 }
 
-.BookWishlist{
-    font-size: 3px;
-    margin-left: 12px;
-}
-
 .BookButtons{
     display: flex;
     flex-direction: row;
-    margin-top: 13px;
+    justify-content: space-around;
+    margin-top: 10px;
+}
+
+#info {
+    display: block;
+}
+
+#info:hover #bookInfo{
+    width: 500px;
+    display: block;
+    position: absolute;
+    min-height: 200px;
+    width: 300px;
+    margin-left: 208px;
+    margin-top: -244px;
+    background-color: white;
+    // border:1px solid grey;
+    z-index: 100;
+}
+
+#bookInfo {
+    position: absolute;
+    display: none;
 }

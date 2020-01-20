@@ -1,4 +1,4 @@
-.pagination {
+/* .pagination {
   margin-top: 25px;
   border-radius: 2px;
   border-color: black;
@@ -17,4 +17,8 @@
   background-color: #A03037;
   color: white;
   border: 1px solid #A03037;
+} */
+
+.pageNo:hover {
+  background-color: #A03037;
 }
