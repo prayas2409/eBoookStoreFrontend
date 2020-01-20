@@ -5,21 +5,37 @@ import CardContent from '@material-ui/core/CardContent';
 import "./card.scss"
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
+import { getMethod } from './httpService.js';
 const image1 = require('../../src/images/dontMakeMeThink.jpg');
 
 require('dotenv').config();
 
 class card extends React.Component {
+
     constructor(props) {
         super(props);
         this.state = {
-            cardHover: false
+            cardHover: false,
+            books: []
         }
         this.handleOnHoverCard = this.handleOnHoverCard.bind(this)
     }
 
+
+    componentDidMount() {
+        this.getAllBooks();
+    }
+
+    getAllBooks = () => {
+        getMethod().then((res) => {
+            this.setState({ books: res.data.data });
+            console.log("books", this.state.books);
+        }).catch((err) => {
+            console.log(err);
+        })
+    }
+
     handleOnHoverCard = () => {
-        console.log("Hovering")
         this.setState({
             cardHover: !this.state.cardHover
         })
@@ -42,6 +58,10 @@ class card extends React.Component {
                     <div className="BookDetail">
                         <div className="BookTitle">
                             <span>Don't Make Me Think</span>
+                            {/* {this.state.books.map(data => (
+                                <span>{data.title}</span>
+                            ))} */}
+                            {/* <span></span> */}
                         </div>
                         <div className="BookAuthor">
                             <span>By Steven King</span>
@@ -54,7 +74,7 @@ class card extends React.Component {
 
                     <div className="BookButtons">
                         <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }}>buynow</Button>
-                    <Button variant="outlined" style={{ width: '40%', height: '10%', fontSize: '10px' }}>wishlist</Button>
+                        <Button variant="outlined" style={{ width: '40%', height: '10%', fontSize: '10px' }}>wishlist</Button>
                     </div>
                     <Card id="bookInfo" variant="outlined">
                         <CardContent>
