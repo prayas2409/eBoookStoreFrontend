@@ -3,6 +3,7 @@ import { createMuiTheme, MuiThemeProvider } from '@material-ui/core';
 import Grid from '@material-ui/core/Grid';
 import Button from '@material-ui/core/Button';
 import Card from './card'
+import { getMethod } from './httpService.js';
 
 const useStyles = createMuiTheme({
     root: {
@@ -15,8 +16,21 @@ class GridView extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            data: [<Card />]
+            books: [],
+            data: []
         }
+    }
+    componentDidMount() {
+        this.getAllBooks();
+    }
+
+    getAllBooks = () => {
+        getMethod().then((res) => {
+            this.setState({ books: res.data.data });
+            console.log("books", this.state.books);
+        }).catch((err) => {
+            console.log(err);
+        })
     }
 
     render() {
@@ -29,8 +43,8 @@ class GridView extends Component {
                         <FormRow />
                     </Grid>
                 </Grid> */}
-                    {this.state.data.map(o => (
-                        o
+                    {this.state.books.map(o => (
+                        <Card data={o} />
                     ))}
                 </div>
             </MuiThemeProvider>
