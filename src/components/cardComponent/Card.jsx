@@ -8,7 +8,7 @@ import Typography from '@material-ui/core/Typography';
 
 require('dotenv').config();
 
-class card extends React.Component {
+class Cards extends React.Component {
 
     constructor(props) {
         super(props);
@@ -31,7 +31,7 @@ class card extends React.Component {
 
                     <CardActionArea >
                         <div className="divName">
-                            <img src={this.props.data.image} width="100px" height="130px" />
+                            <img alt="" src={this.props.data.image} width="100px" height="130px" />
                         </div>
 
                     </CardActionArea>
@@ -41,7 +41,7 @@ class card extends React.Component {
                             <span>{this.props.data.title}</span>
                         </div>
                         <div className="BookAuthor">
-                            <span>{this.props.data.author}</span>
+                            <span>by {this.props.data.author}</span>
                         </div>
                         <div className="BookPrice">
                             <span>Rs. {this.props.data.price}</span>
@@ -59,15 +59,14 @@ class card extends React.Component {
                                 Book Detail
                             </Typography>
                             <Typography color="textSecondary" style={{ fontSize: 12, textAlign: 'initial' }} gutterBottom>
-                            {this.props.data.description}
+                                {this.props.data.description}
                             </Typography>
                         </CardContent>
                     </Card>
                 </Card>
-
             </div>
         )
     }
 }
 
-export default card;
+export default Cards;

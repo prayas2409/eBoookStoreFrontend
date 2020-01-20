@@ -1,8 +1,7 @@
-import React, { Component } from 'react';
-import '../App.css';
+import React from 'react';
+import '../../App.css';
 import AppBar from '@material-ui/core/AppBar';
 import Typography from '@material-ui/core/Typography';
-import bookicon from "../images/bookicon.jpg"
 import { fade, makeStyles } from '@material-ui/core/styles';
 import Toolbar from '@material-ui/core/Toolbar';
 import InputBase from '@material-ui/core/InputBase';

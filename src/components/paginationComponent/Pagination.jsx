@@ -3,7 +3,7 @@ import Button from '@material-ui/core/Button';
 import IconButton from '@material-ui/core/IconButton';
 import KeyboardArrowLeftIcon from '@material-ui/icons/KeyboardArrowLeft';
 import KeyboardArrowRightIcon from '@material-ui/icons/KeyboardArrowRight';
-import '../css/pagination.css';
+import './pagination.css';
 
 export default class CustomPaginationActionsTable extends Component {
 

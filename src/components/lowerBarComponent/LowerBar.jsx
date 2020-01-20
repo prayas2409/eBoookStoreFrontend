@@ -1,22 +1,8 @@
 import React, { Component } from "react"
-import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
-
-
-const useStyles = makeStyles(theme => ({
-    button: {
-        display: 'block',
-        marginTop: theme.spacing(2),
-    },
-    formControl: {
-        margin: theme.spacing(1),
-        minWidth: 120,
-    },
-}));
 
 export default class LowerBar extends Component {
     constructor(props) {
@@ -41,7 +27,7 @@ export default class LowerBar extends Component {
     }
 
     handleOnClickFilter = () => {
-        if (this.state.min != "" && this.state.max != "") {
+        if (this.state.min !== "" && this.state.max !== "") {
             // To do when filter clicked take props from home and set the new dashboard array
             this.setState({
                 filter: true
@@ -62,7 +48,7 @@ export default class LowerBar extends Component {
                 <div >
                     <Toolbar>
                         <Typography edge="start" variant="h6" >
-                            Books (52 items)
+                            Books ({this.props.data} items)
                     </Typography>
                         < div style={{ display: "flex", marginLeft: "auto" }} >
                             {!this.state.clickedFilter ?
