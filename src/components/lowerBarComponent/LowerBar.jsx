@@ -3,6 +3,8 @@ import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
 import Button from '@material-ui/core/Button'
 import TextField from '@material-ui/core/TextField';
+import { getMethod } from '../../service/httpService.js';
+
 
 export default class LowerBar extends Component {
     constructor(props) {
@@ -17,6 +19,7 @@ export default class LowerBar extends Component {
         this.handleOnClickFilter = this.handleOnClickFilter.bind(this)
         this.handleOnHoverFilter = this.handleOnHoverFilter.bind(this)
         this.handleValueChange = this.handleValueChange.bind(this)
+        
     }
 
     handleValueChange = (event) => {
@@ -26,9 +29,24 @@ export default class LowerBar extends Component {
         })
     }
 
+    search() {
+        let path = {
+            path: `sortBooks/?minPrice=${this.state.min}&maxPrice=${this.state.max}`
+            // field: { "field": this.state.value }
+        }
+        getMethod(path).then((res) => {
+          console.log("res", res);
+          this.props.function(res.data.data) 
+          })
+        .catch((err) => {
+          console.log(err);
+        })    
+      }
+
     handleOnClickFilter = () => {
         if (this.state.min !== "" && this.state.max !== "") {
             // To do when filter clicked take props from home and set the new dashboard array
+            this.search()
             this.setState({
                 filter: true
             })

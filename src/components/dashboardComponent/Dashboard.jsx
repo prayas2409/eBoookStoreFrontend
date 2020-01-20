@@ -44,7 +44,7 @@ class Home extends React.Component {
             <div>
                 <ToolBar function={this.setbooks}/>
                 <div style={{ width: '74%', margin: 'auto' }}>
-                    <LowerBar data={this.state.books.length}/>
+                    <LowerBar data={this.state.books.length} function={this.setbooks}/>
                     <GridView data={this.state.books}/>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
