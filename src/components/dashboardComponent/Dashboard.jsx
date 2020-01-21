@@ -13,10 +13,18 @@ class Home extends React.Component {
         this.state = {
             books: []
         }
+        this.setbooks = this.setbooks.bind(this)
     }
 
     componentDidMount() {
-        this.getAllBooks();
+        this.getAllBooks ();
+    }
+
+    setbooks(newbooks) {
+        console.log("dasg",newbooks.data);
+        this.setState({
+            books:newbooks.data
+        })
     }
 
     getAllBooks = () => {
@@ -34,9 +42,9 @@ class Home extends React.Component {
     render() {
         return (
             <div>
-                <ToolBar />
+                <ToolBar function={this.setbooks}/>
                 <div style={{ width: '74%', margin: 'auto' }}>
-                    <LowerBar data={this.state.books.length}/>
+                    <LowerBar data={this.state.books.length} function={this.setbooks}/>
                     <GridView data={this.state.books}/>
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
