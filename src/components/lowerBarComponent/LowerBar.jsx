@@ -9,7 +9,7 @@ export default class LowerBar extends Component {
         super(props)
         this.state = {
             min: 1,
-            max: 10000,
+            max: 100,
             filter: false,
             clickedFilter: false
 
@@ -18,6 +18,8 @@ export default class LowerBar extends Component {
         this.handleOnHoverFilter = this.handleOnHoverFilter.bind(this)
         this.handleValueChange = this.handleValueChange.bind(this)
     }
+
+    //192.168.0.147
 
     handleValueChange = (event) => {
         const { name, value } = event.target
@@ -51,7 +53,8 @@ export default class LowerBar extends Component {
                             Books ({this.props.data} items)
                     </Typography>
                         < div style={{ display: "flex", marginLeft: "auto" }} >
-                            {!this.state.clickedFilter ?
+                            {!this.state.clickedFilter
+                                ?
                                 < Button onMouseEnter={() => this.handleOnHoverFilter()} variant="outlined" color="default" >
                                     <div style={{}}>Filter by price </div>
                                 </Button>

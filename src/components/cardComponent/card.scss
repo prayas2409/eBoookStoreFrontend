@@ -7,7 +7,7 @@ $color : #FFFFFF;
     border-color: gray;
 }
 
-.divName {
+.bookImage {
     background-color: #F5F5F5; 
     display: flex;
     flex-direction: row;
@@ -18,20 +18,20 @@ $color : #FFFFFF;
     height: 150px;
 }
 
-.BookTitle {
+.bookTitle {
     color: rgb(27, 24, 24);
     font-family: Arial, Helvetica, sans-serif;
     font-size: 14px;
     font-weight: 600;
 }
 
-.BookAuthor {
+.bookAuthor {
     color: #656060;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 8px;
 }
 
-.BookPrice {
+.bookPrice {
     display: flex;
     justify-content: space-between;
     color: rgb(27, 24, 24);
@@ -40,10 +40,9 @@ $color : #FFFFFF;
     font-weight: bolder;
     padding-top: 4px;
     width: 87%;
-    // border: 1px solid red;
 }
 
-.BookDetail {
+.bookDetail {
     margin-left: 20px;
     margin-top: 5px;
     display: flex;
@@ -52,29 +51,21 @@ $color : #FFFFFF;
 }
 
 
-.BookBuyButton{
-    // padding-left: 2px;
+.bookBuyButton{
     color: white;
     background-color: #a03037;
-    // justify-content: space-evenly;
-    // font-size: 3px;
-    // font-weight: bold;
-    // margin-left: 10px;
 }
 
-.BookWishlist{
-    // font-size: 3px;
-    // margin-left: 12px;
+.bookWishlist{
     padding-left: 2px;
     color: white;
-    // background-color: #a03037;
     justify-content: space-evenly;
     font-size: 3px;
     font-weight: bold;
     margin-left: 10px;
 }
 
-.BookButtons{
+.bookButtons{
     display: flex;
     flex-direction: row;
     justify-content: space-around;
@@ -94,7 +85,6 @@ $color : #FFFFFF;
     margin-left: 208px;
     margin-top: -244px;
     background-color: white;
-    // border:1px solid grey;
     z-index: 100;
 }
 
