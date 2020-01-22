@@ -107,19 +107,19 @@ export default class ToolBar extends Component {
 
   search() {
     let path = {
-      path: 'searchBook?field='+this.state.value,
+      path: 'searchBook?field=' + this.state.value,
       // field: { "field": this.state.value }
     }
     getMethod(path).then((res) => {
       // console.log("res", res);
-      this.props.function(res.data) 
-      })
+      this.props.function(res.data)
+    })
 
       // this.setState({ books: res.data.data });
       // console.log("books", this.state.books);
-    .catch((err) => {
-      console.log(err);
-    })
+      .catch((err) => {
+        console.log(err);
+      })
   }
 
   componentDidMount() {
@@ -131,7 +131,7 @@ export default class ToolBar extends Component {
     return (
       <MuiThemeProvider theme={useStyles}>
         <div className={useStyles.grow} >
-          <AppBar position="static" style={{ backgroundColor: '#A03037' }}>
+          <AppBar position="static" style={{ backgroundColor: '#A03037', position: 'fixed', top: '0' }}>
             <Toolbar>
               <Icon
                 edge="start"

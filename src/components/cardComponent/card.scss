@@ -21,14 +21,15 @@ $color : #FFFFFF;
 .bookTitle {
     color: rgb(27, 24, 24);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 14px;
-    font-weight: 600;
+    font-size: 13px;
+    font-weight: 500;
 }
 
 .bookAuthor {
     color: #656060;
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 8px;
+    font-size: 9px;
+    margin-top: 2px;
 }
 
 .bookPrice {
@@ -44,7 +45,7 @@ $color : #FFFFFF;
 
 .bookDetail {
     margin-left: 20px;
-    margin-top: 5px;
+    margin-top: 6px;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;

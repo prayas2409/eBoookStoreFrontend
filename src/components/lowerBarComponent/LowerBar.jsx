@@ -19,7 +19,7 @@ export default class LowerBar extends Component {
         this.handleOnClickFilter = this.handleOnClickFilter.bind(this)
         this.handleOnHoverFilter = this.handleOnHoverFilter.bind(this)
         this.handleValueChange = this.handleValueChange.bind(this)
-        
+
     }
 
     handleValueChange = (event) => {
@@ -35,13 +35,13 @@ export default class LowerBar extends Component {
             // field: { "field": this.state.value }
         }
         getMethod(path).then((res) => {
-          console.log("res", res);
-          this.props.function(res.data.data) 
-          })
-        .catch((err) => {
-          console.log(err);
-        })    
-      }
+            console.log("res", res);
+            this.props.function(res.data.data)
+        })
+            .catch((err) => {
+                console.log(err);
+            })
+    }
 
     handleOnClickFilter = () => {
         if (this.state.min !== "" && this.state.max !== "") {
@@ -65,9 +65,9 @@ export default class LowerBar extends Component {
             <p>
                 <div >
                     <Toolbar>
-                        <Typography edge="start" variant="h6" >
-                            Books ({this.props.data} items)
-                    </Typography>
+                        <Typography edge="start" variant="h6">
+                            Books <Typography variant="caption" style={{ color: 'grey' }} gutterBottom>({this.props.data} items)</Typography>
+                        </Typography>
                         < div style={{ display: "flex", marginLeft: "auto" }} >
                             {!this.state.clickedFilter
                                 ?
