@@ -17,19 +17,18 @@ class Home extends React.Component {
     }
 
     componentDidMount() {
-        this.getAllBooks ();
+        this.getAllBooks();
     }
 
     setbooks(newbooks) {
-        console.log("dasg",newbooks.data);
         this.setState({
-            books:newbooks.data
+            books: newbooks.data
         })
     }
 
     getAllBooks = () => {
         let path = {
-            path: "books?pageNo=1"
+            path: "books    "
         }
         getMethod(path).then((res) => {
             this.setState({ books: res.data.data });
@@ -43,9 +42,9 @@ class Home extends React.Component {
         return (
             <div>
                 <ToolBar function={this.setbooks}/>
-                <div style={{ width: '74%', margin: 'auto' }}>
-                    <LowerBar data={this.state.books.length} function={this.setbooks}/>
-                    <GridView data={this.state.books}/>
+                <div style={{ width: '74%', margin: 'auto', marginTop:'6%' }}>
+                    <LowerBar data={this.state.books.length} function={this.setbooks} />
+                    <GridView data={this.state.books} />
                 </div>
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
                     <CustomPaginationActionsTable />
