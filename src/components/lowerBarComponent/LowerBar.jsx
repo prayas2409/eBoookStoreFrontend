@@ -22,8 +22,6 @@ export default class LowerBar extends Component {
         
     }
 
-    //192.168.0.147
-
     handleValueChange = (event) => {
         const { name, value } = event.target
         this.setState({

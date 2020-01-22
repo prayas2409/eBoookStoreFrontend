@@ -52,7 +52,7 @@ class Cards extends React.Component {
 
                     <div className="bookButtons">
                         <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }}>buynow</Button>
-                        <Button variant="outlined" style={{ width: '40%', height: '10%', fontSize: '10px' }}>wishlist</Button>
+                        {/* <Button variant="outlined" style={{ width: '40%', height: '10%', fontSize: '10px' }}>wishlist</Button> */}
                     </div>
                     <Card id="bookInfo" variant="outlined">
                         <CardContent>

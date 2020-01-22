@@ -119,7 +119,6 @@ export default function RecipeReviewCard() {
           </Typography>
         </CardContent>
       </Collapse>
-    
     </Card>
   );
 }
