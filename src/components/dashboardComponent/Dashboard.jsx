@@ -65,7 +65,7 @@ class Home extends React.Component {
         console.log(currentTodos);
 
         return (
-            <div>
+            <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <ToolBar function={this.setbooks} />
                 <div style={{ width: '74%', margin: 'auto', marginTop: '6%' }}>
                     <LowerBar data={this.state.books.length} function={this.setbooks} />

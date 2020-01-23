@@ -6,7 +6,7 @@ import Typography from '@material-ui/core/Typography';
 
 const useStyles = makeStyles(theme => ({
     root: {
-        flexGrow: 1,
+        flexGrow: 1
     },
     title: {
         flexGrow: 1,
@@ -15,7 +15,7 @@ const useStyles = makeStyles(theme => ({
         marginLeft: '80px'
     },
     footer: {
-        backgroundColor: "#2E1D1E",
+        backgroundColor: "#2E1D1E"
     },
 }));
 

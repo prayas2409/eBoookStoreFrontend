@@ -30,7 +30,6 @@ export default class LowerBar extends Component {
     search() {
         let path = {
             path: `sortBooks/?minPrice=${this.state.min}&maxPrice=${this.state.max}`
-            // field: { "field": this.state.value }
         }
         getMethod(path).then((res) => {
             console.log("res", res);
