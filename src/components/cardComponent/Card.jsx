@@ -35,8 +35,8 @@ class Cards extends React.Component {
     //  id = open ? 'simple-popper' : undefined;
 
     render() {
-        return (
 
+        return (
             <div onMouseEnter={() => this.handleOnHoverCard()} onMouseLeave={() => this.handleOnHoverCard()}>
                 <Card className="card" id="info" variant="outlined">
 

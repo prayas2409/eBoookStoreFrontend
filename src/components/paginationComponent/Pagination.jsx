@@ -9,35 +9,27 @@ export default class CustomPaginationActionsTable extends Component {
 
   constructor(props) {
     super(props)
-    this.state = {
-      data: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-    }
+    this.handleClick = this.handleClick.bind(this);
   }
-  displayButton = () => {
-    let result = this.state.data.map(o => {
-      return o
-    })
-    this.setState({ data: result });
+
+  handleClick(o) {
+    this.props.function(o);
   }
 
   render() {
+    const pageNumbers = [];
+    for (let i = 1; i <= Math.ceil(this.props.perPage.books.length / this.props.perPage.todosPerPage); i++) {
+      pageNumbers.push(i);
+    }
+
     return (
       <div>
-        {/* <Fab color="white" aria-label="add" style={{ height: '20px', width: '40px' }}>
-          <KeyboardArrowLeftIcon />
-        </Fab>
-        {this.state.data.map(o => (
-          <Button color="black">{o}</Button>
-        ))}
-        <Fab color="white" aria-label="add" style={{ height: '20px', width: '40px' }}>
-          <KeyboardArrowRightIcon />
-        </Fab> */}
-
         <IconButton color="primary" component="span">
           <KeyboardArrowLeftIcon />
         </IconButton>
-        {this.state.data.map(o => (
-          <Button color="black">{o}</Button>
+        {pageNumbers.map(o => (
+          <Button color="black"
+            onClick={() => this.handleClick(o)}>{o}</Button>
         ))}
         <IconButton color="primary" component="span" style={{ border: '2px' }}>
           <KeyboardArrowRightIcon />

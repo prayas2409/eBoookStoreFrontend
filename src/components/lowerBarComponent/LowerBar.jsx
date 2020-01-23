@@ -14,12 +14,10 @@ export default class LowerBar extends Component {
             max: 10000,
             filter: false,
             clickedFilter: false
-
         }
         this.handleOnClickFilter = this.handleOnClickFilter.bind(this)
         this.handleOnHoverFilter = this.handleOnHoverFilter.bind(this)
         this.handleValueChange = this.handleValueChange.bind(this)
-
     }
 
     handleValueChange = (event) => {
