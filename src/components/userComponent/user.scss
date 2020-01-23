@@ -1,29 +1,42 @@
 $color : #FFFFFF;
 
 .userCard{
-    height: 170px;
-    width: 700px;
-    padding: 50px;
-    padding-top: 20px;
+    height: 210px;
+    width: 730px;
+    margin-left: 15%;
+    // padding: 50px;
+    // padding-top: 20px;
+    // border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .myCart{
     font-family: Arial, Helvetica, sans-serif;
     font-size: 15px;
     font-weight: bold;  
+    width: 660px;
+    margin: 20px 33px ;
 }
 
 .mainCart{
-    margin-top: 100px;
     display: flex;
-    flex-direction: row;
-    justify-content: center;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 100px;
 }
 
 .cart{
-    padding-top: 20px;
     display: flex;
     flex-direction: row;
+    // padding-top: 20px;
+    justify-content: flex-start;
+    // border: 1px solid red;
+    width: 660px;
+    margin: auto;
+    margin-top: 10px;
+
 }
 
 .bookImages{
@@ -37,7 +50,7 @@ $color : #FFFFFF;
     justify-content: space-between;
     color: rgb(27, 24, 24);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 12px;
+    font-size: 14px;
     font-weight: bold;
     padding-top: 4px;
     width: 87%;
@@ -55,11 +68,11 @@ $color : #FFFFFF;
     margin-left: 30%;
     color: rgb(27, 24, 24);
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 13px;
+    font-size: 2px;
     font-weight: 500;
 }
 
-.PlaceHolder{
+.placeHolder{
     display : flex;
     flex-direction: row;
     justify-content:  flex-end;
@@ -74,12 +87,14 @@ $color : #FFFFFF;
 }
 
 .customerCard{
-    height: 324px;
-    width: 700px;
-    padding: 50px;
-    padding-top: 20px;
+    // height: 324px;
+    height: 550px;
+    width: 730px;
+    // padding: 50px;
+    // padding-top: 20px;
     margin-top: 38px;
-    margin-left: 137px;
+    margin-left: 15%;
+    // margin: auto;
 }
 
 .customerDetails{
@@ -90,6 +105,14 @@ $color : #FFFFFF;
 .textFieldRow{
     display : flex;
     flex-direction: row;
+    justify-content: space-evenly;
+    margin-right: 253px;
+}
+
+.textFieldAddress {
+    margin-left: 22px;
+    display : flex;
+    flex-direction: row;
 }
 
 .typeRadio{
@@ -97,8 +120,26 @@ $color : #FFFFFF;
 }
 
 .mainOrderSummary{
-    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    margin-top: 45px;
+    margin-bottom: 45px;
+}
+
+.orderButton{
+    margin-left: 294px;
+    margin-top: 80px;
+}
+
+.CustomerPage {
+    margin: 20px;
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
+}
+
+.chekoutButton {
+    margin-left: 320px;
+    margin-top: 80px;
 }

@@ -1,5 +1,5 @@
 const axios = require('axios').default;
-const URL = "http://localhost:3000/"
+const URL = "http://localhost:3000/";
 
 export function getMethod(data) {
     console.log(data.path);
