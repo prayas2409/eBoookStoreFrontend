@@ -11,7 +11,7 @@ export default class LowerBar extends Component {
         super(props)
         this.state = {
             min: 1,
-            max: 10000,
+            max: 100,
             filter: false,
             clickedFilter: false
         }
@@ -67,7 +67,8 @@ export default class LowerBar extends Component {
                             Books <Typography variant="caption" style={{ color: 'grey' }} gutterBottom>({this.props.data} items)</Typography>
                         </Typography>
                         < div style={{ display: "flex", marginLeft: "auto" }} >
-                            {!this.state.clickedFilter ?
+                            {!this.state.clickedFilter
+                                ?
                                 < Button onMouseEnter={() => this.handleOnHoverFilter()} variant="outlined" color="default" >
                                     <div style={{}}>Filter by price </div>
                                 </Button>

@@ -41,25 +41,25 @@ class Cards extends React.Component {
                 <Card className="card" id="info" variant="outlined">
 
                     <CardActionArea >
-                        <div className="divName">
+                        <div className="bookImage">
                             <img alt="" src={this.props.data.image} width="100px" height="130px" />
                         </div>
                     </CardActionArea>
 
-                    <div className="BookDetail">
-                        <div className="BookTitle">
+                    <div className="bookDetail">
+                        <div className="bookTitle">
                             <span>{this.props.data.title}</span>
                         </div>
-                        <div className="BookAuthor">
+                        <div className="bookAuthor">
                             <span>by {this.props.data.author}</span>
                         </div>
-                        <div className="BookPrice">
+                        <div className="bookPrice">
                             <span>Rs. {this.props.data.price}</span>
                             <span>Qty: {this.props.data.quantity}</span>
                         </div>
                     </div>
 
-                    <div className="BookButtons">
+                    <div className="bookButtons">
                         <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }}>buynow</Button>
                         {/* <Button variant="outlined" style={{ width: '40%', height: '10%', fontSize: '10px' }}>wishlist</Button> */}
                     </div>
