@@ -5,6 +5,7 @@ import GridView from '../gridViewComponent/GridView';
 import CustomPaginationActionsTable from '../paginationComponent/Pagination';
 import LowerBar from '../lowerBarComponent/LowerBar';
 import { getMethod } from '../../service/httpService.js';
+import User from "../userComponent/user";
 
 class Home extends React.Component {
 
@@ -74,6 +75,7 @@ class Home extends React.Component {
                 <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
                     <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber} />
                 </div>
+                <User />
                 <Footer />
             </div>
         );
