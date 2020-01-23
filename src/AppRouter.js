@@ -6,7 +6,7 @@ import dashboard from './components/dashboardComponent/Dashboard';
 const AppRouter = () => (
     <BrowserRouter>
         <div>
-            <Route path="/dashboard" component={dashboard} exact={true} />
+            <Route path="/" component={dashboard} exact={true} />
         </div>
     </BrowserRouter>
 );
