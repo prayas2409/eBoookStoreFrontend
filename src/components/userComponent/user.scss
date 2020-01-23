@@ -1,0 +1,104 @@
+$color : #FFFFFF;
+
+.userCard{
+    height: 170px;
+    width: 700px;
+    padding: 50px;
+    padding-top: 20px;
+}
+
+.myCart{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    font-weight: bold;  
+}
+
+.mainCart{
+    margin-top: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}
+
+.cart{
+    padding-top: 20px;
+    display: flex;
+    flex-direction: row;
+}
+
+.bookImages{
+    height: 90px;
+    width: 60px;
+}
+
+.cartPrice{
+    margin-left: 30%;
+    display: flex;
+    justify-content: space-between;
+    color: rgb(27, 24, 24);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    font-weight: bold;
+    padding-top: 4px;
+    width: 87%;
+}
+
+.cartAuthor{
+    margin-left: 30%;
+        color: #656060;
+        font-family: Arial, Helvetica, sans-serif;
+        font-size: 9px;
+        margin-top: 2px;
+}
+
+.cartTitle {
+    margin-left: 30%;
+    color: rgb(27, 24, 24);
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+}
+
+.PlaceHolder{
+    display : flex;
+    flex-direction: row;
+    justify-content:  flex-end;
+}
+
+.cartIcon{
+    margin-left: 15%;
+}
+
+.textField{
+      width: 20;
+}
+
+.customerCard{
+    height: 324px;
+    width: 700px;
+    padding: 50px;
+    padding-top: 20px;
+    margin-top: 38px;
+    margin-left: 137px;
+}
+
+.customerDetails{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+}
+
+.textFieldRow{
+    display : flex;
+    flex-direction: row;
+}
+
+.typeRadio{
+    padding-top: 3%
+}
+
+.mainOrderSummary{
+    margin-top: 40px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+}

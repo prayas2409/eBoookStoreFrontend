@@ -23,7 +23,7 @@ class Cards extends React.Component {
             cardHover: !this.state.cardHover
         })
     }
-    
+
     render() {
 
         return (
@@ -52,16 +52,16 @@ class Cards extends React.Component {
                     <div className="bookButtons">
                         <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }}>buynow</Button>
                     </div>
-                        <Card id="bookInfo" variant="outlined">
-                            <CardContent>
-                                <Typography color="textPrimary" style={{ fontFamily: 'Arial', fontSize: 16, fontWeight: 600 }} gutterBottom>
-                                    Book Detail
+                    <Card id="bookInfo" variant="outlined">
+                        <CardContent>
+                            <Typography color="textPrimary" style={{ fontFamily: 'Arial', fontSize: 16, fontWeight: 600 }} gutterBottom>
+                                Book Detail
                             </Typography>
-                                <Typography color="textSecondary" style={{ fontSize: 12, textAlign: 'initial' }} gutterBottom>
-                                    {this.props.data.description}
-                                </Typography>
-                            </CardContent>
-                        </Card>
+                            <Typography color="textSecondary" style={{ fontSize: 12, textAlign: 'initial' }} gutterBottom>
+                                {this.props.data.description}
+                            </Typography>
+                        </CardContent>
+                    </Card>
                 </Card>
             </div>
         )
