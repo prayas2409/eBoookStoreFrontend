@@ -11,78 +11,79 @@ import { getMethod } from '../../service/httpService.js';
 
 
 import Icon from "@material-ui/core/Icon";
-import "./headerbar.scss";
+import "./headerbar.css";
+import { spacing } from '@material-ui/system';
 
-
-const useStyles = createMuiTheme({
-  // appBar: {
-  //   backgroundColor: "#A03037"
-  // },
-  icon: {
-    marginLeft: 80
-  },
-  grow: {
-    flexGrow: 1,
-  },
-  // menuButton: {
-  //   marginRight: theme.spacing(2),
-  // },
-  title: {
-    display: 'none',
-    marginLeft: 8,
-    // [theme.breakpoints.up('sm')]: {
-    //   display: 'block',
-    // },
-  },
-  search: {
-    position: 'relative',
-    // borderRadius: theme.shape.borderRadius,
-    // backgroundColor: fade(theme.palette.common.white, 1.0),
-    // '&:hover': {
-    //   backgroundColor: fade(theme.palette.common.white, 1.0),
-    // },
-    // marginRight: theme.spacing(2),
-    marginLeft: 0,
-    width: '100%',
-    // [theme.breakpoints.up('sm')]: {
-    //   marginLeft: theme.spacing(3),
-    //   width: '45%',
-    // },
-  },
-  searchIcon: {
-    // width: theme.spacing(7),
-    height: '100%',
-    position: 'absolute',
-    pointerEvents: 'none',
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'center',
-    color: 'darkgrey'
-  },
-  inputRoot: {
-    color: 'grey',
-  },
-  inputInput: {
-    // padding: theme.spacing(1, 1, 1, 7),
-    // transition: theme.transitions.create('width'),
-    width: '100%',
-    // [theme.breakpoints.up('md')]: {
-    //   width: 200,
-    // },
-  },
-  sectionDesktop: {
-    display: 'none',
-    // [theme.breakpoints.up('md')]: {
-    //   display: 'flex',
-    // },
-  },
-  sectionMobile: {
-    display: 'flex',
-    // [theme.breakpoints.up('md')]: {
-    //   display: 'none',
-    // },
-  },
-});
+// // .MuiSvgIcon-root
+// const useStyles = createMuiTheme({
+//   // appBar: {
+//   //   backgroundColor: "#A03037"
+//   // },
+//   icon: {
+//     marginLeft: 80
+//   },
+//   grow: {
+//     flexGrow: 1,
+//   },
+//   // menuButton: {
+//   //   marginRight: theme.spacing(2),
+//   // },
+//   title: {
+//     display: 'none',
+//     marginLeft: 8,
+//     // [theme.breakpoints.up('sm')]: {
+//     //   display: 'block',
+//     // },
+//   },
+//   search: {
+//     position: 'relative',
+//     // borderRadius: theme.shape.borderRadius,
+//     // backgroundColor: fade(theme.palette.common.white, 1.0),
+//     // '&:hover': {
+//     //   backgroundColor: fade(theme.palette.common.white, 1.0),
+//     // },
+//     // marginRight: theme.spacing(2),
+//     marginLeft: 0,
+//     width: '100%',
+//     // [theme.breakpoints.up('sm')]: {
+//     //   marginLeft: theme.spacing(3),
+//     //   width: '45%',
+//     // },
+//   },
+//   searchIcon: {
+//     // width: theme.spacing(7),
+//     height: '100%',
+//     position: 'absolute',
+//     pointerEvents: 'none',
+//     display: 'flex',
+//     alignItems: 'center',
+//     justifyContent: 'center',
+//     color: 'darkgrey'
+//   },
+//   inputRoot: {
+//     color: 'grey',
+//   },
+//   inputInput: {
+//     // padding: theme.spacing(1, 1, 1, 7),
+//     // transition: theme.transitions.create('width'),
+//     width: '100%',
+//     // [theme.breakpoints.up('md')]: {
+//     //   width: 200,
+//     // },
+//   },
+//   sectionDesktop: {
+//     display: 'none',
+//     // [theme.breakpoints.up('md')]: {
+//     //   display: 'flex',
+//     // },
+//   },
+//   sectionMobile: {
+//     display: 'flex',
+//     // [theme.breakpoints.up('md')]: {
+//     //   display: 'none',
+//     // },
+//   },
+// });
 
 export default class ToolBar extends Component {
 
@@ -107,16 +108,11 @@ export default class ToolBar extends Component {
 
   search() {
     let path = {
-      path: 'searchBook?field=' + this.state.value,
-      // field: { "field": this.state.value }
+      path: 'searchBook?field=' + this.state.value
     }
     getMethod(path).then((res) => {
-      // console.log("res", res);
       this.props.function(res.data)
     })
-
-      // this.setState({ books: res.data.data });
-      // console.log("books", this.state.books);
       .catch((err) => {
         console.log(err);
       })
@@ -126,38 +122,33 @@ export default class ToolBar extends Component {
     this.search();
   }
 
-  // useStyles = useStyles();
   render() {
     return (
-      <MuiThemeProvider theme={useStyles}>
-        <div className={useStyles.grow} >
+      <MuiThemeProvider>
+        <div>
           <AppBar position="static" style={{ backgroundColor: '#A03037', position: 'fixed', top: '0' }}>
             <Toolbar>
               <Icon
                 edge="start"
                 color="inherit"
                 aria-label="open drawer"
-                className={useStyles.icon}
+                style={{ marginLeft: '12%' }}
               >
                 <MenuBookTwoToneIcon />
               </Icon>
-              <Typography className={useStyles.title} variant="h6" noWrap>
+              <Typography style={{ marginLeft: '1%' }} variant="h6" noWrap>
                 eBookstore
-                      </Typography>
-              <div className={useStyles.search}>
-                <div useStyles={useStyles.searchIcon}>
-                  <SearchIcon />
-                </div>
+              </Typography>
+
+              <div className="searchBar">
+                <SearchIcon style={{ color: 'grey', margin: '1%' }} />
                 <InputBase
                   placeholder="Search…"
-                  useStyles={{
-                    root: useStyles.inputRoot,
-                    input: useStyles.inputInput,
-                  }}
+                  style={{ width: '100%' }}
                   value={this.state.value} onChange={(event) => this.handleChange(event)}
                 />
               </div>
-              <div className={useStyles.grow} />
+
             </Toolbar>
           </AppBar>
         </div >
