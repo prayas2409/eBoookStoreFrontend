@@ -20,7 +20,7 @@ class GridView extends Component {
             <MuiThemeProvider theme={useStyles}>
                 <div className={useStyles.root} style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap', justifyContent: 'space-evenly' }}>
                     {this.props.data.map(o => (
-                        <Card data={o} />
+                        <Card data={o} function={this.props.function} />
                     ))}
                 </div>
             </MuiThemeProvider>

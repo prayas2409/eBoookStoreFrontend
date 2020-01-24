@@ -16,21 +16,24 @@ import FormLabel from '@material-ui/core/FormLabel';
 
 class User extends Component {
 
-    render() {
+    constructor(props) {
+        super(props)
+    }
 
+    render() {
         return (
             <div>
                 <div className="mainCart">
                     <Card className="userCard">
-                        <div className="myCart">My Cart (2)</div>
+                        <div className="myCart">My Cart (1)</div>
                         <div className="cart">
                             <div>
-                                <img className="bookImages" src='http://books.google.com/books/content?id=GXznEnKwTdAC&printsec=frontcover&img=1&zoom=5' />
+                                <img className="bookImages" src={this.props.data.image} />
                             </div>
                             <div style={{ marginLeft: '5%' }}>
-                                <Typography className="cartTitle" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '450' }}>Don't Make Me Think</Typography>
-                                <Typography className="cartAuthor" style={{ fontSize: '10px' }}>by Steven King</Typography>
-                                <Typography className="cartPrice" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '600' }}>Rs. 1500</Typography>
+                                <Typography className="cartTitle" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '450' }}>{this.props.data.title}</Typography>
+                                <Typography className="cartAuthor" style={{ fontSize: '10px' }}>by {this.props.data.author}</Typography>
+                                <Typography className="cartPrice" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '600' }}>Rs. {this.props.data.price}</Typography>
                             </div>
                             <div className="orderButton">
                                 <Button variant="contained" color="primary">
