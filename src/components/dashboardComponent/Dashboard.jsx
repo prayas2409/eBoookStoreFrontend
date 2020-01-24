@@ -14,12 +14,15 @@ class Home extends React.Component {
         this.state = {
             books: [],
             currentPage: 1,
-            todosPerPage: 12
+            todosPerPage: 12,
+            bookState: true,
+            orderState: false,
+            selectedbook: {}
         }
         this.setbooks = this.setbooks.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.setPageNumber = this.setPageNumber.bind(this);
-
+        this.getPurchesedbook = this.getPurchesedbook.bind(this);
     }
 
     componentDidMount() {
@@ -45,6 +48,17 @@ class Home extends React.Component {
         })
     }
 
+    getPurchesedbook(bookDetail) {
+        console.log("get book dashboard", bookDetail);
+        this.setState({
+            selectedbook: bookDetail,
+            bookState: !this.state.bookState,
+            orderState: !this.state.orderState
+        })
+        console.log("statebook ", this.state.selectedbook);
+
+    }
+
     getAllBooks = () => {
         let path = {
             path: "books"
@@ -68,14 +82,18 @@ class Home extends React.Component {
         return (
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <ToolBar function={this.setbooks} />
-                <div style={{ width: '74%', margin: 'auto', marginTop: '6%' }}>
-                    <LowerBar data={this.state.books.length} function={this.setbooks} />
-                    <GridView data={currentTodos} />
+                <div style={this.state.bookState ? { display: 'block' } : { display: 'none' }}>
+                    <div style={{ width: '74%', margin: 'auto', marginTop: '6%' }}>
+                        <LowerBar data={this.state.books.length} function={this.setbooks} />
+                        <GridView data={currentTodos} function={this.getPurchesedbook} />
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
+                        <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber} />
+                    </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
-                    <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber} />
+                <div style={this.state.orderState ? { display: 'block' } : { display: 'none' }}>
+                    <User data={this.state.selectedbook} />
                 </div>
-                <User />
                 <Footer />
             </div>
         );

@@ -24,6 +24,12 @@ class Cards extends React.Component {
         })
     }
 
+    buyBook(items) {
+        // console.log("selected book card", items);
+
+        this.props.function(items)
+    }
+
     render() {
 
         return (
@@ -50,7 +56,7 @@ class Cards extends React.Component {
                     </div>
 
                     <div className="bookButtons">
-                        <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }}>buynow</Button>
+                        <Button variant="outlined" style={{ backgroundColor: '#A03037', color: 'white', width: '40%', height: '10%', fontSize: '10px' }} onClick={() => this.buyBook(this.props.data)}>buynow</Button>
                     </div>
                     <Card id="bookInfo" variant="outlined">
                         <CardContent>
