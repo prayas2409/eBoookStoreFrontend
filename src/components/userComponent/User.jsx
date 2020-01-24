@@ -20,11 +20,13 @@ class User extends Component {
             editbutton: false,
             continue: true,
             fields: {},
-            errors: {}
+            errors: {},
+            disabled: false
         }
         this.changeEvent = this.changeEvent.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.checkout = this.checkout.bind(this);
+        this.setEdiable= this.setEdiable.bind(this)
     }
 
     handleChange(e) {
@@ -36,7 +38,15 @@ class User extends Component {
 
     }
 
+    setEdiable(){
+        this.setState({
+            disabled:false,
+            continue: true,
+        })
+    }
+
     checkout() {
+        
         if (this.validateForm()) {
             // let fields = {};
             // fields["username"] = "";
@@ -53,6 +63,10 @@ class User extends Component {
                 orderSummery: !this.state.orderSummery,
                 continue: !this.state.continue,
                 editbutton: !this.state.editbutton
+            })
+            this.setState({
+                disabled:true
+
             })
         }
     }
@@ -199,10 +213,11 @@ class User extends Component {
                 </div>
 
                 <div>
+                    <fieldset disabled={this.state.disabled}>
                     <Card className="customerCard" style={this.state.customerDetails ? { minHeight: '630px' } : { height: '60px' }}>
                         <div className="CustomerPage">
                             <Typography className="customerDetails" style={{ fontSize: '15px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold' }}>Customer Details</Typography>
-                            <Button style={{ fontSize: '12px', fontFamily: 'Arial, Helvetica, sans-serif' }} style={this.state.editbutton ? { display: 'block' } : { display: 'none' }}>Edit</Button>
+                            <Button onClick={()=>this.setState({disabled:false})} style={{ fontSize: '12px', fontFamily: 'Arial, Helvetica, sans-serif' }} style={this.state.editbutton ? { display: 'block' } : { display: 'none' }}>Edit</Button>
                         </div>
 
                         <div className="textFieldRow">
@@ -263,6 +278,7 @@ class User extends Component {
                             </div>
                         </div>
                     </Card>
+                    </fieldset>
                 </div>
 
                 <div className="mainOrderSummary" style={this.state.orderSummery ? { height: '210px' } : { height: '60px' }}>
