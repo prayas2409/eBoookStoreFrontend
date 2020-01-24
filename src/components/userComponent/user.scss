@@ -88,7 +88,7 @@ $color : #FFFFFF;
 
 .customerCard{
     // height: 324px;
-    height: 550px;
+    // height: 550px;
     width: 730px;
     // padding: 50px;
     // padding-top: 20px;
@@ -99,7 +99,8 @@ $color : #FFFFFF;
 
 .customerDetails{
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
+    font-size: 15px;
+    font-weight: bold;
 }
 
 .textFieldRow{
@@ -137,9 +138,16 @@ $color : #FFFFFF;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
+    margin-left: 30px;
+    width: 660px;
 }
 
 .chekoutButton {
     margin-left: 320px;
     margin-top: 80px;
 }
+
+.errorMsg {
+    color: #cc0000;
+    margin-bottom: 12px;
+  }

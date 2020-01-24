@@ -6,6 +6,7 @@ import CustomPaginationActionsTable from '../paginationComponent/Pagination';
 import LowerBar from '../lowerBarComponent/LowerBar';
 import { getMethod } from '../../service/httpService.js';
 import User from "../userComponent/user";
+import CustomizedExpansionPanels from './../panel'
 
 class Home extends React.Component {
 
@@ -94,6 +95,7 @@ class Home extends React.Component {
                 <div style={this.state.orderState ? { display: 'block' } : { display: 'none' }}>
                     <User data={this.state.selectedbook} />
                 </div>
+                {/* <CustomizedExpansionPanels /> */}
                 <Footer />
             </div>
         );
