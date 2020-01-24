@@ -4,9 +4,6 @@ $color : #FFFFFF;
     height: 210px;
     width: 730px;
     margin-left: 15%;
-    // padding: 50px;
-    // padding-top: 20px;
-    // border: 1px solid red;
     display: flex;
     flex-direction: column;
     justify-content: flex-start;
@@ -30,13 +27,10 @@ $color : #FFFFFF;
 .cart{
     display: flex;
     flex-direction: row;
-    // padding-top: 20px;
     justify-content: flex-start;
-    // border: 1px solid red;
     width: 660px;
     margin: auto;
     margin-top: 10px;
-
 }
 
 .bookImages{
@@ -78,23 +72,10 @@ $color : #FFFFFF;
     justify-content:  flex-end;
 }
 
-.cartIcon{
-    margin-left: 15%;
-}
-
-.textField{
-      width: 20;
-}
-
 .customerCard{
-    // height: 324px;
-    // height: 550px;
     width: 730px;
-    // padding: 50px;
-    // padding-top: 20px;
     margin-top: 38px;
     margin-left: 15%;
-    // margin: auto;
 }
 
 .customerDetails{
@@ -111,7 +92,7 @@ $color : #FFFFFF;
 }
 
 .textFieldAddress {
-    margin-left: 22px;
+    margin-left: 25px;
     display : flex;
     flex-direction: row;
 }

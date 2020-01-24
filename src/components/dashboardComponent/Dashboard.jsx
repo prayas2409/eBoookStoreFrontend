@@ -5,8 +5,7 @@ import GridView from '../gridViewComponent/GridView';
 import CustomPaginationActionsTable from '../paginationComponent/Pagination';
 import LowerBar from '../lowerBarComponent/LowerBar';
 import { getMethod } from '../../service/httpService.js';
-import User from "../userComponent/user";
-import CustomizedExpansionPanels from './../panel'
+import User from "../userComponent/User";
 
 class Home extends React.Component {
 
@@ -18,16 +17,34 @@ class Home extends React.Component {
             todosPerPage: 12,
             bookState: true,
             orderState: false,
-            selectedbook: {}
+            selectedbook: {},
+            maxNumOfPage:1
         }
         this.setbooks = this.setbooks.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.setPageNumber = this.setPageNumber.bind(this);
         this.getPurchesedbook = this.getPurchesedbook.bind(this);
+        this.decrementCurrentPageNumber = this.decrementCurrentPageNumber.bind(this)
+        this.incrementCurrentPageNumber = this.incrementCurrentPageNumber.bind(this)
     }
 
     componentDidMount() {
         this.getAllBooks();
+    }
+
+    incrementCurrentPageNumber(){
+        let variable = this.state.currentPage + 1
+        if (variable<=this.state.maxNumOfPage){
+            this.setPageNumber(variable)
+        }
+    }
+
+    decrementCurrentPageNumber(){
+        console.log("max page ",this.state.maxNumOfPage)
+        let variable = this.state.currentPage - 1
+        if (variable>0){
+            this.setPageNumber(variable)
+        }
     }
 
     handleClick(event) {
@@ -45,7 +62,7 @@ class Home extends React.Component {
 
     setPageNumber(pageNumber) {
         this.setState({
-            currentPage: pageNumber
+            currentPage: pageNumber,
         })
     }
 
@@ -67,6 +84,9 @@ class Home extends React.Component {
         getMethod(path).then((res) => {
             console.log("res", res.data.data)
             this.setState({ books: res.data.data });
+            this.setState({
+                maxNumOfPage : Math.ceil(this.state.books.length / this.state.todosPerPage)
+            })
             console.log("books=>", this.state.books);
         }).catch((err) => {
             console.log(err);
@@ -89,7 +109,10 @@ class Home extends React.Component {
                         <GridView data={currentTodos} function={this.getPurchesedbook} />
                     </div>
                     <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
-                        <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber} />
+                        <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber} 
+                            incfunction={this.incrementCurrentPageNumber}
+                            decfunction={this.decrementCurrentPageNumber}
+                        />
                     </div>
                 </div>
                 <div style={this.state.orderState ? { display: 'block' } : { display: 'none' }}>

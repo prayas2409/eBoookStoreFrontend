@@ -10,7 +10,7 @@ export default class LowerBar extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            min: 1,
+            min: 50,
             max: 100,
             filter: false,
             clickedFilter: false
@@ -34,14 +34,14 @@ export default class LowerBar extends Component {
         getMethod(path).then((res) => {
             console.log("res", res);
             this.props.function(res.data.data)
-        })
+        })  
             .catch((err) => {
                 console.log(err);
             })
     }
 
     handleOnClickFilter = () => {
-        if (this.state.min !== "" && this.state.max !== "") {
+        if ( this.state.min !== "" && this.state.max !== "" && this.state.max > this.state.min )  {
             // To do when filter clicked take props from home and set the new dashboard array
             this.search()
             this.setState({
@@ -66,16 +66,15 @@ export default class LowerBar extends Component {
                             Books <Typography variant="caption" style={{ color: 'grey' }} gutterBottom>({this.props.data} items)</Typography>
                         </Typography>
                         < div style={{ display: "flex", marginLeft: "auto" }} >
-                            {!this.state.clickedFilter
-                                ?
+                            {!this.state.clickedFilter ?
                                 < Button onMouseEnter={() => this.handleOnHoverFilter()} variant="outlined" color="default" >
                                     <div style={{}}>Filter by price </div>
                                 </Button>
                                 :
                                 <form onMouseLeave={() => this.handleOnHoverFilter()}>
-                                    <TextField name="min" value={this.state.min} onChange={(event) => this.handleValueChange(event)}></TextField>
-                                    <TextField name="max" value={this.state.max} onChange={(event) => this.handleValueChange(event)}></TextField>
-
+                                    <TextField name="min" type="number" inputProps={{ min: 50, max: 10000, step: "1" }} value={this.state.min} placeholder="hi" onChange={(event) => this.handleValueChange(event)}></TextField>
+                                    <TextField placeholder ="TO" disabled style={{width:"10%"}}></TextField>
+                                    <TextField name="max" type="number" inputProps={{ min: 51, max: 10000, step: "1" }} value={this.state.max} onChange={(event) => this.handleValueChange(event)}></TextField>
                                     <Button onClick={() => this.handleOnClickFilter()}>Filter</Button>
                                 </form>
                             }
