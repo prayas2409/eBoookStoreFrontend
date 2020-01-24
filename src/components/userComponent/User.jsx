@@ -1,18 +1,12 @@
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
-import ToolBar from '../headerBarComponent/headerbar';
 import "./user.scss"
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
-import AddCircleOutlineIcon from '@material-ui/icons/AddCircleOutline';
-import RemoveCircleOutlineIcon from '@material-ui/icons/RemoveCircleOutline';
 import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
-import FormHelperText from '@material-ui/core/FormHelperText';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import FormControl from '@material-ui/core/FormControl';
-import FormLabel from '@material-ui/core/FormLabel';
 
 class User extends Component {
 
@@ -71,7 +65,7 @@ class User extends Component {
 
                         <div className="textFieldAddress">
                             <TextField id="outlined-multiline-static" label="Address" multiline
-                                rows="3" variant="outlined" style={{ width: '432px' }} InputProps={{ disableUnderline: true }} />
+                                rows="3" variant="outlined" style={{ width: '463px' }} InputProps={{ disableUnderline: true }} />
                         </div><br></br>
 
                         <div className="textFieldRow">
