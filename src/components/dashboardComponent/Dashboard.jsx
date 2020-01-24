@@ -118,7 +118,6 @@ class Home extends React.Component {
                 <div style={this.state.orderState ? { display: 'block' } : { display: 'none' }}>
                     <User data={this.state.selectedbook} />
                 </div>
-                {/* <CustomizedExpansionPanels /> */}
                 <Footer />
             </div>
         );
