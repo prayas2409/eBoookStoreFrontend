@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import Card from '@material-ui/core/Card';
-import ToolBar from '../headerBarComponent/headerbar';
 import "./user.scss"
 import Button from '@material-ui/core/Button';
 import Typography from '@material-ui/core/Typography';
@@ -68,7 +67,7 @@ class User extends Component {
 
                         <div className="textFieldAddress">
                             <TextField id="outlined-multiline-static" label="Address" multiline
-                                rows="3" variant="outlined" style={{ width: '432px' }} InputProps={{ disableUnderline: true }} />
+                                rows="3" variant="outlined" style={{ width: '463px' }} InputProps={{ disableUnderline: true }} />
                         </div><br></br>
 
                         <div className="textFieldRow">

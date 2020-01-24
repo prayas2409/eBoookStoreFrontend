@@ -5,7 +5,7 @@ import GridView from '../gridViewComponent/GridView';
 import CustomPaginationActionsTable from '../paginationComponent/Pagination';
 import LowerBar from '../lowerBarComponent/LowerBar';
 import { getMethod } from '../../service/httpService.js';
-import User from "../userComponent/user";
+import User from "../userComponent/User";
 
 class Home extends React.Component {
 

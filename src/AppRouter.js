@@ -1,7 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import dashboard from './components/dashboardComponent/Dashboard';
-// import dashboard from './components/userComponent/user';
+// import dashboard from './components/dashboardComponent/Dashboard';
+import dashboard from './components/orderPlacedComponent/OderPlaced';
 
 const AppRouter = () => (
     <BrowserRouter>
