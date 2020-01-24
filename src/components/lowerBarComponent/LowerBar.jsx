@@ -34,7 +34,7 @@ export default class LowerBar extends Component {
         getMethod(path).then((res) => {
             console.log("res", res);
             this.props.function(res.data.data)
-        })
+        })  
             .catch((err) => {
                 console.log(err);
             })

@@ -10,29 +10,33 @@ export default class CustomPaginationActionsTable extends Component {
   constructor(props) {
     super(props)
     this.handleClick = this.handleClick.bind(this);
+    this.state={
+      maxNumOfPage:0
+    }
   }
 
-  handleClick(o) {
-    this.props.function(o);
+  handleClick(page) {
+    this.props.function(page);
   }
 
   render() {
     const pageNumbers = [];
-    for (let i = 1; i <= Math.ceil(this.props.perPage.books.length / this.props.perPage.todosPerPage); i++) {
+    let i = 0;
+    for (i = 1; i <= Math.ceil(this.props.perPage.books.length / this.props.perPage.todosPerPage); i++) {
       pageNumbers.push(i);
     }
 
     return (
       <div>
-        <IconButton color="primary" component="span">
-          <KeyboardArrowLeftIcon />
+        <IconButton color="primary" component="span" >
+          <KeyboardArrowLeftIcon onClick={()=>this.props.decfunction()}/>
         </IconButton>
         {pageNumbers.map(o => (
           <Button color="black"
             onClick={() => this.handleClick(o)}>{o}</Button>
         ))}
         <IconButton color="primary" component="span" style={{ border: '2px' }}>
-          <KeyboardArrowRightIcon />
+          <KeyboardArrowRightIcon onClick={()=> this.props.incfunction()}/>
         </IconButton>
       </div>
     )
