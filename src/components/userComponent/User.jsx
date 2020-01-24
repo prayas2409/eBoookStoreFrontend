@@ -79,10 +79,10 @@ class User extends Component {
             errors["mobile"] = "*Please enter your mobile no.";
         }
 
-        if (typeof fields["mobileno"] !== "undefined") {
-            if (!fields["mobileno"].match(/^[0-9]{10}$/)) {
+        if (typeof fields["mobile"] !== "undefined") {
+            if (!fields["mobile"].match(/^[0-9]{10}$/)) {
                 formIsValid = false;
-                errors["mobileno"] = "*Please enter valid mobile no.";
+                errors["mobile"] = "*Please enter valid mobile no.";
             }
         }
 

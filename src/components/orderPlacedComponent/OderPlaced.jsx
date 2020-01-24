@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import ToolBar from '../headerBarComponent/headerbar';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
 import TableCell from '@material-ui/core/TableCell';
@@ -9,14 +8,12 @@ import TableRow from '@material-ui/core/TableRow';
 import "./orderPlaced.scss"
 import Paper from '@material-ui/core/Paper';
 import Button from '@material-ui/core/Button';
-import Footer from "../footerComponent/Footer";
 import orderImage from '../../images/Screenshot.jpg';
 
 class OrderPlaced extends Component {
     render() {
         return (
             <div>
-                <ToolBar />
                 <div className="mainDiv">
                     <div className="orderImage">
                         <img src={orderImage} />
@@ -55,7 +52,6 @@ class OrderPlaced extends Component {
                                 </Button>
                     </div>
                 </div>
-                <Footer />
             </div>
         )
     }
