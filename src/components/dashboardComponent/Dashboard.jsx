@@ -14,12 +14,12 @@ class Home extends React.Component {
         this.state = {
             books: [],
             currentPage: 1,
-            todosPerPage: 12
+            todosPerPage: 12,
+            orderState: true
         }
         this.setbooks = this.setbooks.bind(this);
         this.handleClick = this.handleClick.bind(this);
         this.setPageNumber = this.setPageNumber.bind(this);
-
     }
 
     componentDidMount() {
@@ -68,14 +68,18 @@ class Home extends React.Component {
         return (
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
                 <ToolBar function={this.setbooks} />
-                <div style={{ width: '74%', margin: 'auto', marginTop: '6%' }}>
-                    <LowerBar data={this.state.books.length} function={this.setbooks} />
-                    <GridView data={currentTodos} />
+                <div style={{ display: 'none' }}>
+                    <div style={{ width: '74%', margin: 'auto', marginTop: '6%' }}>
+                        <LowerBar data={this.state.books.length} function={this.setbooks} />
+                        <GridView data={currentTodos} />
+                    </div>
+                    <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
+                        <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber} />
+                    </div>
                 </div>
-                <div style={{ display: 'flex', justifyContent: 'center', marginBottom: '3%', marginTop: '2%' }}>
-                    <CustomPaginationActionsTable perPage={this.state} function={this.setPageNumber} />
+                <div style={this.state.orderState ? { display: 'block' } : { display: 'none' }}>
+                    <User />
                 </div>
-                <User />
                 <Footer />
             </div>
         );
