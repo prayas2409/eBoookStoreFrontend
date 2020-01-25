@@ -25,8 +25,6 @@ class Cards extends React.Component {
     }
 
     buyBook(items) {
-        // console.log("selected book card", items);
-
         this.props.function(items)
     }
 

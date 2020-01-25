@@ -21,7 +21,7 @@ class OrderPlaced extends Component {
 
                     <div className="orderMessage">
                         <p className="messageParagraph"> hurray!!!your order is confirmed</p>
-                        <p className="messageParagraph">the order id is #123456 save the order id</p>
+                        <p className="messageParagraph">the order id is #{this.props.data} save the order id</p>
                         <p className="messageParagraph">for further communication..</p>
                     </div>
 
@@ -47,7 +47,7 @@ class OrderPlaced extends Component {
                     </div>
 
                     <div className="continueShoopingButton">
-                        <Button variant="contained" color="primary">
+                        <Button variant="contained" color="primary" onClick={this.props.function}>
                             CONTINUE SHOOPING
                                 </Button>
                     </div>
