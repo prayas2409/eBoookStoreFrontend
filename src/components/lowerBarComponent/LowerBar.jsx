@@ -72,9 +72,8 @@ export default class LowerBar extends Component {
                                 </Button>
                                 :
                                 <form onMouseLeave={() => this.handleOnHoverFilter()}>
-                                    <TextField name="min" type="number" inputProps={{ min: 50, max: 10000, step: "1" }} value={this.state.min} placeholder="hi" onChange={(event) => this.handleValueChange(event)}></TextField>
-                                    <TextField placeholder ="TO" disabled style={{width:"10%"}}></TextField>
-                                    <TextField name="max" type="number" inputProps={{ min: 51, max: 10000, step: "1" }} value={this.state.max} onChange={(event) => this.handleValueChange(event)}></TextField>
+                                    <TextField name="min" type="number" inputProps={{ min: 50, max: 10000, step: "1" }} value={this.state.min} placeholder="Min Price" onChange={(event) => this.handleValueChange(event)}></TextField>
+                                    <TextField name="max" type="number" inputProps={{ min: 51, max: 10000, step: "1" }} value={this.state.max} placeholder="Max Price" onChange={(event) => this.handleValueChange(event)}></TextField>
                                     <Button onClick={() => this.handleOnClickFilter()}>Filter</Button>
                                 </form>
                             }

@@ -62,7 +62,7 @@ export default class ToolBar extends Component {
             <Typography style={{ marginLeft: '1%' }} variant="h6" noWrap>
               eBookstore
             </Typography>
-
+          
             <div className="searchBar">
               <SearchIcon style={{ color: 'grey', margin: '1%' }} />
               <InputBase
