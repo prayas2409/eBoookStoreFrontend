@@ -42,6 +42,9 @@ class User extends Component {
         this.setState({
             disabled:false,
             continue: true,
+            orderSummery: !this.state.orderSummery,
+            editbutton: !this.state.editbutton
+
         })
     }
 
@@ -217,7 +220,7 @@ class User extends Component {
                     <Card className="customerCard" style={this.state.customerDetails ? { minHeight: '630px' } : { height: '60px' }}>
                         <div className="CustomerPage">
                             <Typography className="customerDetails" style={{ fontSize: '15px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold' }}>Customer Details</Typography>
-                            <Button onClick={()=>this.setState({disabled:false})} style={{ fontSize: '12px', fontFamily: 'Arial, Helvetica, sans-serif' }} style={this.state.editbutton ? { display: 'block' } : { display: 'none' }}>Edit</Button>
+                            <Button onClick={()=>this.setEdiable()} style={{ fontSize: '12px', fontFamily: 'Arial, Helvetica, sans-serif' }} style={this.state.editbutton ? { display: 'block' } : { display: 'none' }}>Edit</Button>
                         </div>
 
                         <div className="textFieldRow">
