@@ -7,8 +7,8 @@ import TextField from '@material-ui/core/TextField';
 import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
-import { borderRight } from '@material-ui/system';
-import OrderPlaced from '../orderPlacedComponent/OderPlaced'
+import { postMethod } from '../../service/httpService.js';
+
 
 class User extends Component {
 
@@ -20,7 +20,6 @@ class User extends Component {
             placeOrder: true,
             editbutton: false,
             continue: true,
-            checkout:true,
             fields: {},
             errors: {},
             disabled: false
@@ -28,7 +27,8 @@ class User extends Component {
         this.changeEvent = this.changeEvent.bind(this);
         this.handleChange = this.handleChange.bind(this);
         this.checkout = this.checkout.bind(this);
-        this.setEdiable= this.setEdiable.bind(this)
+        this.setEdiable = this.setEdiable.bind(this);
+        this.conformOrder = this.conformOrder.bind(this);
     }
 
     handleChange(e) {
@@ -40,21 +40,44 @@ class User extends Component {
 
     }
 
-    setEdiable(){
+    setEdiable() {
         this.setState({
-            disabled:false,
+            disabled: false,
             continue: true,
+            orderSummery: !this.state.orderSummery,
+            editbutton: !this.state.editbutton
         })
     }
 
-    orderPlaced(){
-        this.setState({
-            checkout:false
+    conformOrder() {
+        let orderData = {
+            path: "addUser",
+            data: this.state.fields
+        }
+        console.log('in conformOrder');
+        // this.props.function
+        postMethod(orderData).then((res) => {
+            console.log("res", res.data.data)
+            let conformOrder = {
+                path: "orderBook",
+                data: {
+                    "userId": res.data.data._id,
+                    "bookId": this.props.data._id
+                }
+            }
+            postMethod(conformOrder).then((res) => {
+                console.log("added to cart", res.data.data.orderId);
+                { this.props.function(res.data.data.orderId) }
+            }).catch(err => {
+                console.log(err);
+            })
+        }).catch(err => {
+            console.log(err);
         })
     }
 
     checkout() {
-        
+
         if (this.validateForm()) {
             // let fields = {};
             // fields["username"] = "";
@@ -70,11 +93,8 @@ class User extends Component {
             this.setState({
                 orderSummery: !this.state.orderSummery,
                 continue: !this.state.continue,
-                editbutton: !this.state.editbutton
-            })
-            this.setState({
-                disabled:true
-
+                editbutton: !this.state.editbutton,
+                disabled: !this.state.disabled
             })
         }
     }
@@ -90,7 +110,7 @@ class User extends Component {
         }
 
         if (typeof fields["username"] !== "undefined") {
-            if (!fields["username"].match(/^[a-zA-Z ]*$/)) {
+            if (!fields["username"].match(/^[a-zA-Z]{3,}$/)) {
                 formIsValid = false;
                 errors["username"] = "*Please enter alphabet characters only.";
             }
@@ -114,7 +134,7 @@ class User extends Component {
         }
 
         if (typeof fields["landmark"] !== "undefined") {
-            if (!fields["landmark"].match(/^[a-zA-Z ]*$/)) {
+            if (!fields["landmark"].match(/^[a-zA-Z ]{3,}$/)) {
                 formIsValid = false;
                 errors["landmark"] = "*Please enter valid landmark.";
             }
@@ -140,7 +160,7 @@ class User extends Component {
         }
 
         if (typeof fields["city"] !== "undefined") {
-            if (!fields["city"].match(/^[a-zA-Z ]*$/)) {
+            if (!fields["city"].match(/^[a-zA-Z ]{3,}$/)) {
                 formIsValid = false;
                 errors["city"] = "*Please enter valid city.";
             }
@@ -152,7 +172,7 @@ class User extends Component {
         }
 
         if (typeof fields["address"] !== "undefined") {
-            if (!fields["address"].match(/^[a-zA-Z ]*$/)) {
+            if (!fields["address"].match(/^[a-zA-Z ]{5,}$/)) {
                 formIsValid = false;
                 errors["address"] = "*Please enter valid address.";
             }
@@ -164,7 +184,7 @@ class User extends Component {
         }
 
         if (typeof fields["locality"] !== "undefined") {
-            if (!fields["locality"].match(/^[a-zA-Z ]*$/)) {
+            if (!fields["locality"].match(/^[a-zA-Z ]{3,}$/)) {
                 formIsValid = false;
                 errors["locality"] = "*Please enter valid locality.";
             }
@@ -221,51 +241,50 @@ class User extends Component {
                 </div>
 
                 <div>
-                    <fieldset disabled={this.state.disabled}>
                     <Card className="customerCard" style={this.state.customerDetails ? { minHeight: '630px' } : { height: '60px' }}>
                         <div className="CustomerPage">
                             <Typography className="customerDetails" style={{ fontSize: '15px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold' }}>Customer Details</Typography>
-                            <Button onClick={()=>this.setState({disabled:false})} style={{ fontSize: '12px', fontFamily: 'Arial, Helvetica, sans-serif' }} style={this.state.editbutton ? { display: 'block' } : { display: 'none' }}>Edit</Button>
+                            <Button onClick={() => this.setEdiable()} style={{ fontSize: '12px', fontFamily: 'Arial, Helvetica, sans-serif' }} style={this.state.editbutton ? { display: 'block' } : { display: 'none' }}>Edit</Button>
                         </div>
 
                         <div className="textFieldRow">
                             <div>
-                                <TextField label="Name" name="username" variant="outlined" value={this.state.fields.username} onChange={this.handleChange} style={{ outlineColor: 'coral' }} />
+                                <TextField disabled={this.state.disabled ? true : false} label="Name" name="username" variant="outlined" value={this.state.fields.username} onChange={this.handleChange} style={{ outlineColor: 'coral' }} />
                                 <div className="errorMsg">{this.state.errors.username}</div>
                             </div>
                             <div>
-                                <TextField label="Phone Number" name="mobile" variant="outlined" value={this.state.fields.mobile} onChange={this.handleChange} />
+                                <TextField disabled={this.state.disabled ? true : false} label="Phone Number" name="mobile" variant="outlined" value={this.state.fields.mobile} onChange={this.handleChange} />
                                 <div className="errorMsg">{this.state.errors.mobile}</div>
                             </div>
                         </div><br></br>
 
                         <div className="textFieldRow">
                             <div>
-                                <TextField label="Pincode" name="pincode" value={this.state.fields.pincode} onChange={this.handleChange} variant="outlined" />
+                                <TextField disabled={this.state.disabled ? true : false} label="Pincode" name="pincode" value={this.state.fields.pincode} onChange={this.handleChange} variant="outlined" />
                                 <div className="errorMsg">{this.state.errors.pincode}</div>
                             </div>
                             <div>
-                                <TextField label="Locality" name="locality" value={this.state.fields.locality} onChange={this.handleChange} variant="outlined" />
+                                <TextField disabled={this.state.disabled ? true : false} label="Locality" name="locality" value={this.state.fields.locality} onChange={this.handleChange} variant="outlined" />
                                 <div className="errorMsg">{this.state.errors.locality}</div>
                             </div>
                         </div><br></br>
 
                         <div className="textFieldAddress">
-                            <TextField label="Email ID" multiline name="emailId" value={this.state.fields.emailId} onChange={this.handleChange} variant="outlined" style={{ width: '432px' }} InputProps={{ disableUnderline: true }} />
+                            <TextField disabled={this.state.disabled ? true : false} label="Email ID" multiline name="emailId" value={this.state.fields.emailId} onChange={this.handleChange} variant="outlined" style={{ width: '432px' }} InputProps={{ disableUnderline: true }} />
                         </div><div className="errorMsg">{this.state.errors.emailId}</div><br></br>
 
                         <div className="textFieldAddress">
-                            <TextField label="Address" multiline name="address" value={this.state.fields.address} onChange={this.handleChange}
-                                rows="3" variant="outlined" style={{ width: '432px'}} InputProps={{ disableUnderline: true }} />
+                            <TextField disabled={this.state.disabled ? true : false} label="Address" multiline name="address" value={this.state.fields.address} onChange={this.handleChange}
+                                rows="3" variant="outlined" style={{ width: '432px' }} InputProps={{ disableUnderline: true }} />
                         </div><div className="errorMsg">{this.state.errors.address}</div><br></br>
 
                         <div className="textFieldRow">
                             <div>
-                                <TextField label="City/Town" name="city" value={this.state.fields.city} onChange={this.handleChange} variant="outlined" />
+                                <TextField disabled={this.state.disabled ? true : false} label="City/Town" name="city" value={this.state.fields.city} onChange={this.handleChange} variant="outlined" />
                                 <div className="errorMsg">{this.state.errors.city}</div>
                             </div>
                             <div>
-                                <TextField label="Landmark" name="landmark" value={this.state.fields.landmark} onChange={this.handleChange} variant="outlined" />
+                                <TextField disabled={this.state.disabled ? true : false} label="Landmark" name="landmark" value={this.state.fields.landmark} onChange={this.handleChange} variant="outlined" />
                                 <div className="errorMsg">{this.state.errors.landmark}</div>
                             </div>
                         </div><br></br>
@@ -286,10 +305,9 @@ class User extends Component {
                             </div>
                         </div>
                     </Card>
-                    </fieldset>
                 </div>
 
-                <div className="mainOrderSummary" style={this.state.orderSummery ? { height: '210px' } : { height: '60px' }}>
+                <div className="mainOrderSummary" style={this.state.orderSummery ? { height: '210px' } : { height: '60px' }} >
                     <Card className="userCard">
                         <div className="myCart">Order Summery</div>
                         <div className="cart">
@@ -302,15 +320,12 @@ class User extends Component {
                                 <Typography className="cartPrice" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '600' }}>Rs. {this.props.data.price}</Typography>
                             </div>
                             <div className="chekoutButton">
-                                <Button variant="contained" color="primary"  onClick={() => this.orderPlaced()} >
+                                <Button variant="contained" color="primary" onClick={this.conformOrder} >
                                     Checkout
                                 </Button>
                             </div>
                         </div>
                     </Card>
-                </div>
-                <div style={this.state.checkout ? { display: 'none' } : { display: 'display' }}>
-                    <OrderPlaced />
                 </div>
             </div>
         )
