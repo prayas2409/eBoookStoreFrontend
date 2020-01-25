@@ -297,7 +297,7 @@ class User extends Component {
                                 <Typography className="cartPrice" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '600' }}>Rs. {this.props.data.price}</Typography>
                             </div>
                             <div className="chekoutButton">
-                                <Button variant="contained" color="primary">
+                                <Button variant="contained" color="primary" >
                                     Checkout
                                 </Button>
                             </div>
