@@ -8,6 +8,7 @@ import Radio from '@material-ui/core/Radio';
 import RadioGroup from '@material-ui/core/RadioGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import { borderRight } from '@material-ui/system';
+import OrderPlaced from '../orderPlacedComponent/OderPlaced'
 
 class User extends Component {
 
@@ -19,6 +20,7 @@ class User extends Component {
             placeOrder: true,
             editbutton: false,
             continue: true,
+            checkout:true,
             fields: {},
             errors: {},
             disabled: false
@@ -42,6 +44,12 @@ class User extends Component {
         this.setState({
             disabled:false,
             continue: true,
+        })
+    }
+
+    orderPlaced(){
+        this.setState({
+            checkout:false
         })
     }
 
@@ -294,12 +302,15 @@ class User extends Component {
                                 <Typography className="cartPrice" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '600' }}>Rs. {this.props.data.price}</Typography>
                             </div>
                             <div className="chekoutButton">
-                                <Button variant="contained" color="primary">
+                                <Button variant="contained" color="primary"  onClick={() => this.orderPlaced()} >
                                     Checkout
                                 </Button>
                             </div>
                         </div>
                     </Card>
+                </div>
+                <div style={this.state.checkout ? { display: 'none' } : { display: 'display' }}>
+                    <OrderPlaced />
                 </div>
             </div>
         )
