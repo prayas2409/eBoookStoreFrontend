@@ -16,7 +16,7 @@ export default class ToolBar extends Component {
     this.state = { value: '' };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.handleGoToHome = this.handleGoToHome.bind(this);
   }
 
   handleChange(event) {
@@ -24,10 +24,10 @@ export default class ToolBar extends Component {
     this.search()
   }
 
-  handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+  handleGoToHome(event) {
+    // this.props.history.push('/')
+    window.location.reload(false);
 
-    event.preventDefault();
   }
 
   search() {
@@ -56,10 +56,11 @@ export default class ToolBar extends Component {
               color="inherit"
               aria-label="open drawer"
               style={{ marginLeft: '12%' }}
+              onClick={() => this.handleGoToHome()}
             >
               <MenuBookTwoToneIcon />
             </Icon>
-            <Typography style={{ marginLeft: '1%' }} variant="h6" noWrap>
+            <Typography onClick={() => this.handleGoToHome()}  style={{ marginLeft: '1%' }} variant="h6" noWrap>
               eBookstore
             </Typography>
           
