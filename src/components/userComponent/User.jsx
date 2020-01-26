@@ -16,7 +16,7 @@ class User extends Component {
         super(props)
         this.state = {
             customerDetails: false,
-            orderSummery: false,
+            orderSummry: false,
             placeOrder: true,
             editbutton: false,
             continue: true,
@@ -28,7 +28,7 @@ class User extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.checkout = this.checkout.bind(this);
         this.setEdiable = this.setEdiable.bind(this);
-        this.conformOrder = this.conformOrder.bind(this);
+        this.confirmOrder = this.confirmOrder.bind(this);
     }
 
     handleChange(e) {
@@ -44,28 +44,28 @@ class User extends Component {
         this.setState({
             disabled: false,
             continue: true,
-            orderSummery: !this.state.orderSummery,
+            orderSummary: !this.state.orderSummary,
             editbutton: !this.state.editbutton
         })
     }
 
-    conformOrder() {
+    confirmOrder() {
         let orderData = {
             path: "addUser",
             data: this.state.fields
         }
-        console.log('in conformOrder');
+        console.log('in confirmOrder');
         // this.props.function
         postMethod(orderData).then((res) => {
             console.log("res", res.data.data)
-            let conformOrder = {
+            let confirmOrder = {
                 path: "orderBook",
                 data: {
                     "userId": res.data.data._id,
                     "bookId": this.props.data._id
                 }
             }
-            postMethod(conformOrder).then((res) => {
+            postMethod(confirmOrder).then((res) => {
                 console.log("added to cart", res.data.data.orderId);
                 { this.props.function(res.data.data.orderId) }
             }).catch(err => {
@@ -220,7 +220,7 @@ class User extends Component {
         return (
             <div>
                 <div className="mainCart">
-                    <Card className="userCard">
+                    <Card className="userCard"style={!this.state.orderSummary ? { height: '210px' } : { height: '0px' }} >
                         <div className="myCart">My Cart (1)</div>
                         <div className="cart">
                             <div>
@@ -249,42 +249,42 @@ class User extends Component {
 
                         <div className="textFieldRow">
                             <div>
-                                <TextField disabled={this.state.disabled ? true : false} label="Name" name="username" variant="outlined" value={this.state.fields.username} onChange={this.handleChange} style={{ outlineColor: 'coral' }} />
+                                <TextField disabled={this.state.disabled ? true : false}     inputProps={{ maxLength: 20 }} label="Name" name="username" variant="standard" value={this.state.fields.username} onChange={this.handleChange} style={{ outlineColor: 'coral' }} />
                                 <div className="errorMsg">{this.state.errors.username}</div>
                             </div>
                             <div>
-                                <TextField disabled={this.state.disabled ? true : false} label="Phone Number" name="mobile" variant="outlined" value={this.state.fields.mobile} onChange={this.handleChange} />
+                                <TextField disabled={this.state.disabled ? true : false} inputProps={{ maxLength: 10 }} label="Phone Number" name="mobile" variant="standard" value={this.state.fields.mobile} onChange={this.handleChange} />
                                 <div className="errorMsg">{this.state.errors.mobile}</div>
                             </div>
                         </div><br></br>
 
                         <div className="textFieldRow">
                             <div>
-                                <TextField disabled={this.state.disabled ? true : false} label="Pincode" name="pincode" value={this.state.fields.pincode} onChange={this.handleChange} variant="outlined" />
+                                <TextField disabled={this.state.disabled ? true : false} inputProps={{ maxLength: 6 }} label="Pincode" name="pincode" value={this.state.fields.pincode} onChange={this.handleChange} variant="standard" />
                                 <div className="errorMsg">{this.state.errors.pincode}</div>
                             </div>
                             <div>
-                                <TextField disabled={this.state.disabled ? true : false} label="Locality" name="locality" value={this.state.fields.locality} onChange={this.handleChange} variant="outlined" />
+                                <TextField disabled={this.state.disabled ? true : false} inputProps={{ maxLength: 15 }} label="Locality" name="locality" value={this.state.fields.locality} onChange={this.handleChange} variant="standard" />
                                 <div className="errorMsg">{this.state.errors.locality}</div>
                             </div>
                         </div><br></br>
 
                         <div className="textFieldAddress">
-                            <TextField disabled={this.state.disabled ? true : false} label="Email ID" multiline name="emailId" value={this.state.fields.emailId} onChange={this.handleChange} variant="outlined" style={{ width: '432px' }} InputProps={{ disableUnderline: true }} />
+                            <TextField disabled={this.state.disabled ? true : false} label="Email ID" inputProps={{ maxLength: 30 }} multiline name="emailId" value={this.state.fields.emailId} onChange={this.handleChange} variant="standard" style={{ width: '432px' }} InputProps={{ disableUnderline:false}} />
                         </div><div className="errorMsg">{this.state.errors.emailId}</div><br></br>
 
                         <div className="textFieldAddress">
-                            <TextField disabled={this.state.disabled ? true : false} label="Address" multiline name="address" value={this.state.fields.address} onChange={this.handleChange}
-                                rows="3" variant="outlined" style={{ width: '432px' }} InputProps={{ disableUnderline: true }} />
+                            <TextField disabled={this.state.disabled ? true : false} inputProps={{ maxLength: 100 }} label="Address" multiline name="address" value={this.state.fields.address} onChange={this.handleChange}
+                                rows="3" variant="standard" style={{ width: '432px' }} InputProps={{ disableUnderline: false }} />
                         </div><div className="errorMsg">{this.state.errors.address}</div><br></br>
 
                         <div className="textFieldRow">
                             <div>
-                                <TextField disabled={this.state.disabled ? true : false} label="City/Town" name="city" value={this.state.fields.city} onChange={this.handleChange} variant="outlined" />
+                                <TextField disabled={this.state.disabled ? true : false} inputProps={{ maxLength: 28 }} label="City/Town" name="city" value={this.state.fields.city} onChange={this.handleChange} variant="standard" />
                                 <div className="errorMsg">{this.state.errors.city}</div>
                             </div>
                             <div>
-                                <TextField disabled={this.state.disabled ? true : false} label="Landmark" name="landmark" value={this.state.fields.landmark} onChange={this.handleChange} variant="outlined" />
+                                <TextField disabled={this.state.disabled ? true : false} inputProps={{ maxLength: 30 }} label="Landmark" name="landmark" value={this.state.fields.landmark} onChange={this.handleChange} variant="standard" />
                                 <div className="errorMsg">{this.state.errors.landmark}</div>
                             </div>
                         </div><br></br>
@@ -307,9 +307,9 @@ class User extends Component {
                     </Card>
                 </div>
 
-                <div className="mainOrderSummary" style={this.state.orderSummery ? { height: '210px' } : { height: '60px' }} >
+                <div className="mainOrderSummary" style={this.state.orderSummary ? { height: '210px' } : { height: '60px' }} >
                     <Card className="userCard">
-                        <div className="myCart">Order Summery</div>
+                        <div className="myCart">Order Summary</div>
                         <div className="cart">
                             <div>
                                 <img className="bookImages" src={this.props.data.image} />
@@ -320,7 +320,7 @@ class User extends Component {
                                 <Typography className="cartPrice" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '600' }}>Rs. {this.props.data.price}</Typography>
                             </div>
                             <div className="chekoutButton">
-                                <Button variant="contained" color="primary" onClick={this.conformOrder} >
+                                <Button variant="contained" color="primary" onClick={this.confirmOrder} >
                                     Checkout
                                 </Button>
                             </div>
