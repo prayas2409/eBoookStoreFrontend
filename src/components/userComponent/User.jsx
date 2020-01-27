@@ -172,7 +172,7 @@ class User extends Component {
         }
 
         if (typeof fields["address"] !== "undefined") {
-            if (!fields["address"].match(/^[a-zA-Z ]{5,}$/)) {
+            if (!fields["address"].match(/^[a-zA-Z0-9.,-:() ]{5,}$/)) {
                 formIsValid = false;
                 errors["address"] = "*Please enter valid address.";
             }

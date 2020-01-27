@@ -34,19 +34,21 @@ export default class LowerBar extends Component {
         getMethod(path).then((res) => {
             console.log("res", res);
             this.props.function(res.data.data)
-        })  
+        })
             .catch((err) => {
                 console.log(err);
             })
     }
 
     handleOnClickFilter = () => {
-        if ( this.state.min !== "" && this.state.max !== "" && this.state.max > this.state.min )  {
-            // To do when filter clicked take props from home and set the new dashboard array
-            this.search()
-            this.setState({
-                filter: true
-            })
+        if (this.state.min !== "" && this.state.max !== "" && this.state.max > this.state.min) {
+            if (this.state.min > 0) {
+                // To do when filter clicked take props from home and set the new dashboard array
+                this.search()
+                this.setState({
+                    filter: true
+                })
+            }
         }
     }
 
