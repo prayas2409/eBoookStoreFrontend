@@ -116,7 +116,7 @@ class Home extends React.Component {
 
         return (
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <ToolBar function={this.setbooks} />
+                <ToolBar function={this.setbooks} history= {this.props.history}/>
                 <div style={{ minHeight: '573px' }}>
                     <div style={this.state.bookState ? { display: 'block' } : { display: 'none' }}>
                         <div style={{ width: '74%', margin: 'auto', marginTop: '6%' }}>

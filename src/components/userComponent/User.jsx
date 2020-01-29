@@ -16,7 +16,7 @@ class User extends Component {
         super(props)
         this.state = {
             customerDetails: false,
-            orderSummery: false,
+            orderSummry: false,
             placeOrder: true,
             editbutton: false,
             continue: true,
@@ -28,7 +28,7 @@ class User extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.checkout = this.checkout.bind(this);
         this.setEdiable = this.setEdiable.bind(this);
-        this.conformOrder = this.conformOrder.bind(this);
+        this.confirmOrder = this.confirmOrder.bind(this);
     }
 
     handleChange(e) {
@@ -44,20 +44,21 @@ class User extends Component {
         this.setState({
             disabled: false,
             continue: true,
-            orderSummery: !this.state.orderSummery,
+            orderSummary: !this.state.orderSummary,
             editbutton: !this.state.editbutton
         })
     }
 
-    conformOrder() {
+    confirmOrder() {
         let orderData = {
             path: "addUser",
             data: this.state.fields
         }
-        console.log('in conformOrder');
+        console.log('in confirmOrder');
         // this.props.function
         postMethod(orderData).then((res) => {
-            let conformOrder = {
+
+            let confirmOrder = {
                 path: "orderBook",
                 data: {
                     "userId": res.data.data._id,
@@ -68,7 +69,7 @@ class User extends Component {
                     "price": this.props.data.price
                 }
             }
-            postMethod(conformOrder).then((res) => {
+            postMethod(confirmOrder).then((res) => {
                 console.log("added to cart", res.data.data.orderId);
                 { this.props.function(res.data.data.orderId) }
             }).catch(err => {
@@ -222,7 +223,7 @@ class User extends Component {
         return (
             <div>
                 <div className="mainCart">
-                    <Card className="userCard">
+                    <Card className="userCard"style={!this.state.orderSummary ? { height: '210px' } : { height: '0px' }} >
                         <div className="myCart">My Cart (1)</div>
                         <div className="cart">
                             <div>
@@ -311,9 +312,9 @@ class User extends Component {
                     </Card>
                 </div>
 
-                <div className="mainOrderSummary" style={this.state.orderSummery ? { height: '210px' } : { height: '60px' }} >
+                <div className="mainOrderSummary" style={this.state.orderSummary ? { height: '210px' } : { height: '60px' }} >
                     <Card className="userCard">
-                        <div className="myCart">Order Summery</div>
+                        <div className="myCart">Order Summary</div>
                         <div className="cart">
                             <div>
                                 <img className="bookImages" src={this.props.data.image} />
@@ -324,7 +325,7 @@ class User extends Component {
                                 <Typography className="cartPrice" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '600' }}>Rs. {this.props.data.price}</Typography>
                             </div>
                             <div className="chekoutButton">
-                                <Button variant="contained" color="primary" onClick={this.conformOrder} >
+                                <Button variant="contained" color="primary" onClick={this.confirmOrder} >
                                     Checkout
                                 </Button>
                             </div>
