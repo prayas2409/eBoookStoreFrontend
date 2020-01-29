@@ -11,6 +11,7 @@ import Button from '@material-ui/core/Button';
 import orderImage from '../../images/Screenshot.jpg';
 
 class OrderPlaced extends Component {
+
     render() {
         return (
             <div>
@@ -18,7 +19,6 @@ class OrderPlaced extends Component {
                     <div className="orderImage">
                         <img src={orderImage} />
                     </div>
-
                     <div className="orderMessage">
                         <p className="messageParagraph"> hurray!!!your order is confirmed</p>
                         <p className="messageParagraph">the order id is #{this.props.data} save the order id</p>
@@ -47,12 +47,12 @@ class OrderPlaced extends Component {
                     </div>
 
                     <div className="continueShoopingButton">
-                        <Button variant="contained" color="primary" onClick={this.props.function}>
-                            CONTINUE SHOOPING
+                        <Button variant="contained" color="primary" onClick={this.props.function} onClick={() => window.location.reload(false)}>
+                            CONTINUE SHOPPING
                                 </Button>
                     </div>
                 </div>
-            </div>
+            </div >
         )
     }
 }

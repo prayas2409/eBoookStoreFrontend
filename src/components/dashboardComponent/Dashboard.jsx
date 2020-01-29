@@ -45,7 +45,6 @@ class Home extends React.Component {
     }
 
     decrementCurrentPageNumber() {
-        console.log("max page ", this.state.maxNumOfPage)
         let variable = this.state.currentPage - 1
         if (variable > 0) {
             this.setPageNumber(variable)
@@ -59,7 +58,6 @@ class Home extends React.Component {
     }
 
     setbooks(newbooks) {
-        console.log("book from child", newbooks);
         this.setState({
             books: newbooks.data,
         })
@@ -72,18 +70,14 @@ class Home extends React.Component {
     }
 
     getPurchesedbook(bookDetail) {
-        console.log("get book dashboard", bookDetail);
         this.setState({
             selectedbook: bookDetail,
             bookState: !this.state.bookState,
             orderState: !this.state.orderState,
         })
-        console.log("statebook ", this.state.selectedbook);
     }
 
     conformOrder(orderId) {
-        console.log(orderId);
-
         this.setState({
             orderState: !this.state.orderState,
             finalPage: !this.state.finalPage,
@@ -105,12 +99,10 @@ class Home extends React.Component {
             path: "books"
         }
         getMethod(path).then((res) => {
-            console.log("res", res.data.data)
             this.setState({ books: res.data.data });
             this.setState({
                 maxNumOfPage: Math.ceil(this.state.books.length / this.state.todosPerPage)
             })
-            console.log("books=>", this.state.books);
         }).catch((err) => {
             console.log(err);
         })
@@ -121,7 +113,6 @@ class Home extends React.Component {
         const indexOfLastTodo = currentPage * todosPerPage;
         const indexOfFirstTodo = indexOfLastTodo - todosPerPage;
         const currentTodos = this.state.books.slice(indexOfFirstTodo, indexOfLastTodo);
-        console.log(currentTodos);
 
         return (
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
@@ -152,5 +143,5 @@ class Home extends React.Component {
     }
 
 }
-
+    
 export default Home;
