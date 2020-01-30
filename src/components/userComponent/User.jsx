@@ -16,7 +16,7 @@ class User extends Component {
         super(props)
         this.state = {
             customerDetails: false,
-            orderSummry: false,
+            orderSummery: false,
             placeOrder: true,
             editbutton: false,
             continue: true,
@@ -28,7 +28,7 @@ class User extends Component {
         this.handleChange = this.handleChange.bind(this);
         this.checkout = this.checkout.bind(this);
         this.setEdiable = this.setEdiable.bind(this);
-        this.confirmOrder = this.confirmOrder.bind(this);
+        this.conformOrder = this.conformOrder.bind(this);
     }
 
     handleChange(e) {
@@ -44,32 +44,32 @@ class User extends Component {
         this.setState({
             disabled: false,
             continue: true,
-            orderSummary: !this.state.orderSummary,
+            orderSummery: !this.state.orderSummery,
             editbutton: !this.state.editbutton
         })
     }
 
-    confirmOrder() {
+    conformOrder() {
         let orderData = {
             path: "addUser",
             data: this.state.fields
         }
-        console.log('in confirmOrder');
+        console.log('in conformOrder');
         // this.props.function
         postMethod(orderData).then((res) => {
-
-            let confirmOrder = {
+            let conformOrder = {
                 path: "orderBook",
                 data: {
                     "userId": res.data.data._id,
                     "userName": res.data.data.userName,
+                    "password": res.data.data.password,
                     "bookId": this.props.data._id,
                     "title": this.props.data.title,
                     "email": res.data.data.email,
                     "price": this.props.data.price
                 }
             }
-            postMethod(confirmOrder).then((res) => {
+            postMethod(conformOrder).then((res) => {
                 console.log("added to cart", res.data.data.orderId);
                 { this.props.function(res.data.data.orderId) }
             }).catch(err => {
@@ -116,6 +116,20 @@ class User extends Component {
             if (!fields["username"].match(/^[a-zA-Z]{3,}$/)) {
                 formIsValid = false;
                 errors["username"] = "*Please enter alphabet characters only.";
+            }
+        }
+
+        //regular expression for password validation
+        if (!fields["password"]) {
+            formIsValid = false;
+            errors["password"] = "*Please enter your password.";
+        }
+
+        if (typeof fields["password"] !== "undefined") {
+            // if (!fields["password"].match(/((?=.*[0-9])(?=.*[a-z]?)(?=.*[A-Z])(?=.*[@#*$%]).{8,})"/)) {
+                if (!fields["username"].match(/^[a-zA-Z]{3,}$/)) {
+                formIsValid = false;
+                errors["password"] = "*Please enter valid password.";
             }
         }
 
@@ -223,7 +237,7 @@ class User extends Component {
         return (
             <div>
                 <div className="mainCart">
-                    <Card className="userCard"style={!this.state.orderSummary ? { height: '210px' } : { height: '0px' }} >
+                    <Card className="userCard">
                         <div className="myCart">My Cart (1)</div>
                         <div className="cart">
                             <div>
@@ -245,76 +259,81 @@ class User extends Component {
 
                 <div>
                     <Card className="customerCard" style={this.state.customerDetails ? { minHeight: '630px' } : { height: '60px' }}>
-                        <form>
-                            <div className="CustomerPage">
-                                <Typography className="customerDetails" style={{ fontSize: '15px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold' }}>Customer Details</Typography>
-                                <Button onClick={() => this.setEdiable()} style={{ fontSize: '12px', fontFamily: 'Arial, Helvetica, sans-serif' }} style={this.state.editbutton ? { display: 'block' } : { display: 'none' }}>Edit</Button>
+                        <div className="CustomerPage">
+                            <Typography className="customerDetails" style={{ fontSize: '15px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: 'bold' }}>Customer Details</Typography>
+                            <Button onClick={() => this.setEdiable()} style={{ fontSize: '12px', fontFamily: 'Arial, Helvetica, sans-serif' }} style={this.state.editbutton ? { display: 'block' } : { display: 'none' }}>Edit</Button>
+                        </div>
+
+                        <div className="textFieldRow">
+                            <div>
+                                <TextField disabled={this.state.disabled ? true : false} label="Name" name="username" value={this.state.fields.username} onChange={this.handleChange} style={{ outlineColor: 'coral' }} />
+                                <div className="errorMsg">{this.state.errors.username}</div>
                             </div>
+                            <div>
+                                <TextField disabled={this.state.disabled ? true : false} label="Phone Number" name="mobile" value={this.state.fields.mobile} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.mobile}</div>
+                            </div>
+                        </div><br></br>
 
-                            <div className="textFieldRow">
-                                <div>
-                                    <TextField disabled={this.state.disabled ? true : false} label="Name" name="username" value={this.state.fields.username} onChange={this.handleChange} style={{ outlineColor: 'coral' }} />
-                                    <div className="errorMsg">{this.state.errors.username}</div>
-                                </div>
-                                <div>
-                                    <TextField disabled={this.state.disabled ? true : false} label="Phone Number" name="mobile" value={this.state.fields.mobile} onChange={this.handleChange} />
-                                    <div className="errorMsg">{this.state.errors.mobile}</div>
-                                </div>
-                            </div><br></br>
+                        <div className="textFieldRow">
+                            <div>
+                                <TextField disabled={this.state.disabled ? true : false} label="Pincode" name="pincode" value={this.state.fields.pincode} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.pincode}</div>
+                            </div>
+                            <div>
+                                <TextField disabled={this.state.disabled ? true : false} label="Locality" name="locality" value={this.state.fields.locality} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.locality}</div>
+                            </div>
+                        </div><br></br>
 
-                            <div className="textFieldRow">
-                                <div>
-                                    <TextField disabled={this.state.disabled ? true : false} label="Pincode" name="pincode" value={this.state.fields.pincode} onChange={this.handleChange} />
-                                    <div className="errorMsg">{this.state.errors.pincode}</div>
-                                </div>
-                                <div>
-                                    <TextField disabled={this.state.disabled ? true : false} label="Locality" name="locality" value={this.state.fields.locality} onChange={this.handleChange} />
-                                    <div className="errorMsg">{this.state.errors.locality}</div>
-                                </div>
-                            </div><br></br>
-
-                            <div className="textFieldRow">
-                                <TextField disabled={this.state.disabled ? true : false} label="Email ID" value={this.state.fields.emailId} onChange={this.handleChange} style={{ width: '400px' }} />
+                        {/* //-------------- */}
+                        <div className="textFieldRow">
+                            <div>
+                                <TextField disabled={this.state.disabled ? true : false} label="Email ID" name="emailId" value={this.state.fields.emailId} onChange={this.handleChange} />
                             </div><div className="errorMsg">{this.state.errors.emailId}</div><br></br>
-
-                            <div className="textFieldRow">
-                                <TextField disabled={this.state.disabled ? true : false} label="Address" value={this.state.fields.address} onChange={this.handleChange}
-                                    rows="3" style={{ width: '400px' }} />
-                            </div><div className="errorMsg">{this.state.errors.address}</div><br></br>
-
-                            <div className="textFieldRow">
-                                <div>
-                                    <TextField disabled={this.state.disabled ? true : false} label="City/Town" name="city" value={this.state.fields.city} onChange={this.handleChange} />
-                                    <div className="errorMsg">{this.state.errors.city}</div>
-                                </div>
-                                <div>
-                                    <TextField disabled={this.state.disabled ? true : false} label="Landmark" name="landmark" value={this.state.fields.landmark} onChange={this.handleChange} />
-                                    <div className="errorMsg">{this.state.errors.landmark}</div>
-                                </div>
-                            </div><br></br>
-
-                            <div style={{ width: '92%', paddingBottom: '20px',marginLeft: '43px' }}>
-                                <div >
-                                    <div className="typeRadio">Type</div>
-                                    <RadioGroup aria-label="Type" name="type" row>
-                                        <FormControlLabel value="home" control={<Radio />} label="Home" />
-                                        <FormControlLabel value="work" control={<Radio />} label="Work" />
-                                        <FormControlLabel value="other" control={<Radio />} label="Other" />
-                                    </RadioGroup>
-                                </div>
-                                <div className="placeHolder">
-                                    <Button variant="contained" color="primary" onClick={() => this.checkout()} style={this.state.continue ? { display: 'block' } : { display: 'none' }}>
-                                        CONTINUE
-                                </Button>
-                                </div>
+                            <div>
+                                <TextField disabled={this.state.disabled ? true : false} label="Password" name="password" value={this.state.fields.password} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.username}</div>
                             </div>
-                        </form>
+                        </div>
+
+                        <div className="textFieldRow">
+                            <TextField disabled={this.state.disabled ? true : false} label="Address" name="address" value={this.state.fields.address} onChange={this.handleChange}
+                                rows="3" style={{ width: '390px' }} />
+                        </div><div className="errorMsg">{this.state.errors.address}</div><br></br>
+
+                        <div className="textFieldRow">
+                            <div>
+                                <TextField disabled={this.state.disabled ? true : false} label="City/Town" name="city" value={this.state.fields.city} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.city}</div>
+                            </div>
+                            <div>
+                                <TextField disabled={this.state.disabled ? true : false} label="Landmark" name="landmark" value={this.state.fields.landmark} onChange={this.handleChange} />
+                                <div className="errorMsg">{this.state.errors.landmark}</div>
+                            </div>
+                        </div><br></br>
+
+                        <div style={{ width: '92%', marginLeft: '45px', paddingBottom: '20px' }}>
+                            <div >
+                                <div className="typeRadio">Type</div>
+                                <RadioGroup aria-label="Type" name="type" row>
+                                    <FormControlLabel value="home" control={<Radio />} label="Home" />
+                                    <FormControlLabel value="work" control={<Radio />} label="Work" />
+                                    <FormControlLabel value="other" control={<Radio />} label="Other" />
+                                </RadioGroup>
+                            </div>
+                            <div className="placeHolder">
+                                <Button variant="contained" color="primary" onClick={() => this.checkout()} style={this.state.continue ? { display: 'block' } : { display: 'none' }}>
+                                    CONTINUE
+                                </Button>
+                            </div>
+                        </div>
                     </Card>
                 </div>
 
-                <div className="mainOrderSummary" style={this.state.orderSummary ? { height: '210px' } : { height: '60px' }} >
+                <div className="mainOrderSummary" style={this.state.orderSummery ? { height: '210px' } : { height: '60px' }} >
                     <Card className="userCard">
-                        <div className="myCart">Order Summary</div>
+                        <div className="myCart">Order Summery</div>
                         <div className="cart">
                             <div>
                                 <img className="bookImages" src={this.props.data.image} />
@@ -325,7 +344,7 @@ class User extends Component {
                                 <Typography className="cartPrice" style={{ fontSize: '14px', fontFamily: 'Arial, Helvetica, sans-serif', fontWeight: '600' }}>Rs. {this.props.data.price}</Typography>
                             </div>
                             <div className="chekoutButton">
-                                <Button variant="contained" color="primary" onClick={this.confirmOrder} >
+                                <Button variant="contained" color="primary" onClick={this.conformOrder} >
                                     Checkout
                                 </Button>
                             </div>

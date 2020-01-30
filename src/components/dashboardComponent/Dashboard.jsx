@@ -39,7 +39,7 @@ class Home extends React.Component {
 
     incrementCurrentPageNumber() {
         let variable = this.state.currentPage + 1
-        if (variable <= this.state.maxNumOfPage) {
+        if (variable < this.state.maxNumOfPage) {
             this.setPageNumber(variable)
         }
     }
@@ -116,7 +116,7 @@ class Home extends React.Component {
 
         return (
             <div style={{ display: 'flex', flexDirection: 'column', justifyContent: 'space-between' }}>
-                <ToolBar function={this.setbooks} history= {this.props.history}/>
+                <ToolBar function={this.setbooks} />
                 <div style={{ minHeight: '573px' }}>
                     <div style={this.state.bookState ? { display: 'block' } : { display: 'none' }}>
                         <div style={{ width: '74%', margin: 'auto', marginTop: '6%' }}>

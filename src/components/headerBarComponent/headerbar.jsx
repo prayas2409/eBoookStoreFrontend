@@ -19,8 +19,8 @@ export default class ToolBar extends Component {
     this.handleGoToHome = this.handleGoToHome.bind(this);
   }
 
-  handleChange(event) {
-    this.setState({ value: event.target.value });
+  handleChange(value) {
+    this.setState({ value: value.target.value });
     this.search()
   }
 
@@ -69,7 +69,7 @@ export default class ToolBar extends Component {
               <InputBase
                 placeholder="Search…"
                 style={{ width: '100%' }}
-                value={this.state.value} onChange={(event) => this.handleChange(event)}
+                value={this.state.value} onChange={(value) => this.handleChange(value)}
               />
             </div>
 

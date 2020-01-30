@@ -32,7 +32,7 @@ export default class CustomPaginationActionsTable extends Component {
           <KeyboardArrowLeftIcon onClick={()=>this.props.decfunction()}/>
         </IconButton>
         {pageNumbers.map(o => (
-          <Button color="black"
+          <Button color="black" className="buttonFocus"
             onClick={() => this.handleClick(o)}>{o}</Button>
         ))}
         <IconButton color="primary" component="span" style={{ border: '2px' }}>
